@@ -25,8 +25,8 @@ const eventDetails = [
 ];
 
 const compactEventDetails = [
-  { icon: FaCalendarDays, value: "Chủ nhật tuần này" },
-  { icon: FaClock, value: "20:00 - 21:30" },
+  { icon: FaCalendarDays, value: "Thứ 5 hoặc Chủ Nhật (Linh hoạt lựa chọn)" },
+  { icon: FaClock, value: "20:00 - 21:00" },
   { icon: FaLaptop, value: "Google Meet" },
 ];
 
@@ -456,8 +456,6 @@ export function App() {
           <div className="heading-rule" aria-hidden="true"></div>
         </div>
 
-        <CompactEventInfo className="registration-event-list" />
-
         {submitted ? (
           <div className="success-card" role="status">
             <span><FaCircleCheck /></span>
@@ -467,6 +465,24 @@ export function App() {
           </div>
         ) : (
           <form className="registration-form" onSubmit={submitForm}>
+            <fieldset className="session-choice">
+              <legend>Ba mẹ muốn tham gia buổi nào? <b>*</b></legend>
+              <div className="session-choice__options">
+                <label>
+                  <input type="radio" name="session" value="thu-5" required />
+                  <span>Thứ 5</span>
+                </label>
+                <label>
+                  <input type="radio" name="session" value="chu-nhat" required />
+                  <span>Chủ nhật</span>
+                </label>
+                <label>
+                  <input type="radio" name="session" value="ca-2" required />
+                  <span>Cả 2 buổi</span>
+                </label>
+              </div>
+              <p>Hai buổi đều diễn ra từ 20:00 - 21:00 trên Google Meet.</p>
+            </fieldset>
             <label>
               <span>Họ và tên phụ huynh <b>*</b></span>
               <span className="input-wrap"><FaUserGroup /><input name="parentName" required placeholder="Nhập họ và tên của ba/mẹ" /></span>

@@ -255,15 +255,28 @@ p {
   background: #e8c887;
 }
 
-.compact-event-item:nth-child(3) {
+.compact-event-item:nth-child(1) {
   grid-column: 1 / -1;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #f0ddb8;
+}
+
+.compact-event-item:nth-child(2) {
+  grid-column: 1;
   margin-top: 5px;
-  padding-top: 7px;
-  border-top: 1px solid #f0ddb8;
+}
+
+.compact-event-item:nth-child(2) .compact-event-separator {
+  display: none;
+}
+
+.compact-event-item:nth-child(3) {
+  grid-column: 2;
+  margin-top: 5px;
 }
 
 .compact-event-item:nth-child(3) .compact-event-separator {
-  display: none;
+  display: block;
 }
 
 @media (max-width: 350px) {
@@ -895,10 +908,6 @@ p {
   padding-bottom: 38px;
 }
 
-.registration-event-list {
-  margin-bottom: 22px;
-}
-
 .registration-form {
   display: grid;
   gap: 16px;
@@ -918,6 +927,84 @@ p {
 
 .registration-form label b {
   color: #e04c19;
+}
+
+.session-choice {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.session-choice legend {
+  margin-bottom: 9px;
+  padding: 0;
+  color: #183757;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.session-choice legend b {
+  color: #e04c19;
+}
+
+.session-choice__options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.registration-form .session-choice__options label {
+  position: relative;
+  display: block;
+  color: #173b61;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  cursor: pointer;
+}
+
+.registration-form .session-choice__options input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.session-choice__options label > span {
+  display: grid;
+  min-height: 46px;
+  padding: 7px 4px;
+  place-items: center;
+  border: 1px solid #dfd5c4;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 5px 14px rgba(71, 43, 6, 0.05);
+  transition: border-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.session-choice__options input:checked + span {
+  border-color: #ee7600;
+  color: #fff;
+  background: linear-gradient(135deg, #ff9f0a, #f36b00);
+  box-shadow: 0 8px 18px rgba(236, 111, 0, 0.22);
+  transform: translateY(-1px);
+}
+
+.session-choice__options input:focus-visible + span {
+  outline: 3px solid rgba(10, 85, 156, 0.42);
+  outline-offset: 2px;
+}
+
+.session-choice > p {
+  margin: 7px 0 0;
+  color: #667789;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 .input-wrap {

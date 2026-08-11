@@ -251,4 +251,32 @@ No actionable P0, P1, or P2 findings remain for the footer logo.
 
 No actionable P0, P1, or P2 findings remain for the footer logo.
 
+### Pass 17 — webinar schedule and session choice — passed
+
+- Source defect evidence: the three user screenshots showed the stale single-session schedule (`Chủ nhật tuần này`, `20:00 - 21:30`) and no session selector in the registration form.
+- Hero evidence: `E:\webinarladi\site\audit\schedule-hero-updated.png`.
+- Registration evidence: `E:\webinarladi\site\audit\schedule-form-choice.png`.
+- Root cause: the Vite process on port 5173 was serving a stale transformed module even though the source schedule had already changed. The verified project-scoped Vite process was restarted and the served module was rechecked; `21:30` is absent.
+- Both event capsules now display `Thứ 5 tuần này & Chủ nhật tuần này`, `20:00 - 21:00`, and `Google Meet`.
+- The form now has a required three-option radio group: `Thứ 5`, `Chủ nhật`, and `Cả 2 buổi`. Each option has a 46 px touch target, visible keyboard focus, and an orange selected state consistent with the site's CTA system.
+- Interaction evidence: selecting `Cả 2 buổi` produced checked state `true` with submitted value `ca-2`; the form was not submitted during QA.
+- Visual check: labels remain on one row at the tested mobile viewport, the selected state is clearly distinguishable, and there is no horizontal overflow or text clipping.
+- Browser console errors and warnings checked: none. Production build and all four Sites packaging tests passed.
+
+No actionable P0, P1, or P2 findings remain for the webinar schedule or session selector.
+
+### Pass 18 — flexible hero schedule and simplified registration — passed
+
+- Source visual truth: `C:\Users\Admin\AppData\Local\Temp\codex-clipboard-0f02e534-54ba-4a54-bc2d-7ec7427a9390.png` (390 × 95 px), showing the exact Section 1 schedule row to revise.
+- Browser-rendered hero evidence: `E:\webinarladi\site\audit\section1-flexible-schedule.png` at a 491 × 730 CSS viewport and device pixel ratio 1.
+- Browser-rendered form evidence: `E:\webinarladi\site\audit\form-without-duplicate-schedule.png` at the same viewport and density.
+- Focused before/after comparison: `E:\webinarladi\site\audit\section1-schedule-before-after.png`; the implementation capsule was cropped to its visible 384 × 88 px region and placed with the 390 × 95 px source in one comparison input.
+- Section 1 copy now reads exactly `Thứ 5 hoặc Chủ Nhật (Linh hoạt lựa chọn)`, while the established time and Google Meet row remain unchanged.
+- The duplicate event capsule is absent from the registration section (`.registration-section .compact-event-info` count: 0). The form now transitions directly from its heading to the required three-option session selector.
+- Primary interaction: the `Thứ 5` radio option remains functional and produced checked state `true` with value `thu-5`; the form was not submitted.
+- Required fidelity surfaces: typography retains the existing Be Vietnam Pro hierarchy and readable wrap; capsule and form spacing remain balanced; orange/navy/cream tokens are unchanged; no image assets were altered; requested copy is exact and duplicate content is removed.
+- No clipping, horizontal overflow, console errors, or console warnings were observed. Production build and all four Sites packaging tests passed.
+
+No actionable P0, P1, or P2 findings remain for this revision.
+
 final result: passed
