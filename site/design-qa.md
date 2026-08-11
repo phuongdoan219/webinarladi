@@ -203,4 +203,52 @@ No actionable P0, P1, or P2 findings remain.
 - [x] Match the expert carousel navigation to the same edge-centered arrow pattern.
 - [x] Remove the attendance-information note from the end of Section 1 without leaving an empty gap.
 
+### Pass 14 — footer recreation — passed
+
+- Source visual truth: `C:\Users\Admin\AppData\Local\Temp\codex-clipboard-d1a012a4-f601-44b2-b6e6-4b46341b71d4.png`.
+- Implementation screenshot: `E:\webinarladi\site\audit\footer-implementation.png`.
+- Combined comparison evidence: `E:\webinarladi\site\audit\footer-comparison.png`.
+- State: bottom-of-page mobile footer with the compact sticky CTA occupying only the reserved footer-bottom space.
+- Viewport and normalization: browser CSS viewport 418 × 600 at device pixel ratio 1; document content width 403 px after the native scrollbar. The source is 418 × 468 px. The implementation capture is 403 × 578 px; the footer region was cropped from y=50 to y=518 and normalized to 418 × 468 px before the side-by-side comparison.
+- Full-view comparison: the reference and normalized implementation were opened together. The implementation matches the black surface, thin yellow top border, TeenCare lockup, Facebook follow area, two-column information grid, contact block, divider, and centered copyright rhythm.
+- Focused comparison: the logo scale and vertical position were checked separately because the official supplied raster contains transparent canvas around the visible mark. The first pass rendered the visible logo too small and low (P2). The asset was enlarged and translated within its fixed slot; the post-fix comparison aligns the visible mark closely with the reference without cropping or replacing it.
+- Fonts and typography: Be Vietnam Pro retains the existing site language and closely matches the reference's bold headings and compact body hierarchy. No text clips or wraps unexpectedly at the tested width.
+- Spacing and layout rhythm: 15 px side gutters, a two-track information grid, compact 5 px list rhythm, 23 px contact separation, and a 32 px copyright gap reproduce the reference composition. Reserved bottom padding prevents the sticky CTA from covering the copyright.
+- Colors and visual tokens: footer background `#151515`, white headings, muted-gray supporting copy, and the TeenCare yellow top rule match the source balance and maintain readable contrast.
+- Image and icon fidelity: the supplied official TeenCare raster is reused for the lockup; the Facebook mark comes from the installed Font Awesome icon set. No placeholder, custom SVG, or code-drawn brand asset was introduced.
+- Copy and content: all reference footer labels, office locations, hotline, email, and 2026 copyright are present. The Facebook link resolves exactly to `https://www.facebook.com/teencare.vn` and opens in a new tab.
+- Browser console errors checked: none.
+- Remaining difference: minor font rasterization and a few pixels of optical spacing vary from the screenshot and are classified as P3 only.
+
+## Footer findings
+
+No actionable P0, P1, or P2 footer findings remain.
+
+### Pass 15 — footer logo seam fix — passed
+
+- Source defect evidence: `C:\Users\Admin\AppData\Local\Temp\codex-clipboard-979dda8f-b5bd-41ee-b776-38f1189ff37a.png` (238 × 73 px).
+- Revised focused evidence: `E:\webinarladi\site\audit\footer-logo-fixed.png` (230 × 75 px).
+- Combined before/after evidence: `E:\webinarladi\site\audit\footer-logo-before-after.png` (476 × 75 px).
+- Browser-rendered full evidence: `E:\webinarladi\site\audit\footer-logo-fixed-full.png`; CSS viewport 491 × 730 at device pixel ratio 1.
+- P2 identified: the white filtered wordmark layer began at 31% of the image box and intersected the orange mascot, producing a visible vertical white seam.
+- Fix: moved the clipping boundary to 34.25%, which falls in the transparent gap between the mascot and the `TeenCare` wordmark.
+- Post-fix comparison: the orange mascot is continuous with no white stripe, the white wordmark begins cleanly at the `T`, sizing and spacing are unchanged, and the supplied official raster remains the only logo asset.
+- Required fidelity surfaces: typography, layout rhythm, footer color tokens, logo sharpness, and brand copy remain unchanged. No regression or horizontal overflow is visible in the focused or full footer evidence.
+- Browser console errors checked: none.
+
+No actionable P0, P1, or P2 findings remain for the footer logo.
+
+### Pass 16 — complete `TeenCare` wordmark — passed
+
+- Source defect evidence: `C:\Users\Admin\AppData\Local\Temp\codex-clipboard-026dca2a-74fc-4578-8466-30584c5ccfa0.png` (102 × 60 px).
+- Revised full-logo evidence: `E:\webinarladi\site\audit\footer-logo-care-fixed.png` (247 × 80 px).
+- Browser-rendered footer evidence: `E:\webinarladi\site\audit\footer-logo-care-fixed-full.png` at a 491 × 730 CSS viewport, device pixel ratio 1.
+- Focused before/after evidence: `E:\webinarladi\site\audit\footer-care-before-after.png` (204 × 60 px).
+- P2 identified: the transformed logo raster extended beyond the original 188 px link container, allowing the right side of the `Care` wordmark to be clipped at some viewport and rasterization widths.
+- Fix: widened only the logo's containing link to 218 px while locking both raster layers to their existing 188 × 58 px geometry. This preserves the established visual size, overlay boundary, and footer spacing while providing safe room for the entire transformed wordmark.
+- Post-fix evidence: `TeenCare` is fully visible, the final `e` has clear right-side space, the orange mascot remains continuous, and no seam or text clipping remains.
+- Required fidelity surfaces: typography, footer layout rhythm, color tokens, official raster sharpness, and brand copy are unchanged. Browser console errors checked: none.
+
+No actionable P0, P1, or P2 findings remain for the footer logo.
+
 final result: passed

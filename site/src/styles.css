@@ -1279,7 +1279,7 @@ body {
 }
 
 .registration-section {
-  padding-bottom: 106px;
+  padding-bottom: 38px;
 }
 
 @media (max-width: 350px) {
@@ -1287,6 +1287,136 @@ body {
     width: min(calc(100% - 52px), 270px);
     min-height: 40px;
     font-size: 12px;
+  }
+}
+
+.site-footer {
+  position: relative;
+  z-index: 2;
+  padding: 22px 15px 88px;
+  border-top: 2px solid #ffb11c;
+  color: #f7f7f7;
+  background: #151515;
+}
+
+.footer-brand {
+  position: relative;
+  display: block;
+  width: 218px;
+  height: 58px;
+  overflow: hidden;
+}
+
+.footer-brand img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 188px;
+  height: 58px;
+  object-fit: contain;
+  transform: translate(-17px, -8px) scale(1.25);
+  transform-origin: left center;
+}
+
+.footer-brand__light {
+  clip-path: inset(0 0 0 34.25%);
+  filter: brightness(0) invert(1);
+}
+
+.footer-social {
+  display: grid;
+  gap: 8px;
+  margin-top: -1px;
+}
+
+.footer-social strong {
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.footer-social a {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 8px;
+  color: #b9b9b9;
+  font-size: 23px;
+  text-decoration: none;
+  transition: color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  color: #fff;
+  background: #1877f2;
+  transform: translateY(-2px);
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.22fr);
+  gap: 22px;
+  margin-top: 13px;
+}
+
+.footer-column h2,
+.footer-contact h2 {
+  margin: 0 0 10px;
+  color: #fff;
+  font-family: "Be Vietnam Pro", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.35px;
+}
+
+.footer-column ul,
+.footer-column address,
+.footer-contact address {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  color: #c8c8c8;
+  font-size: 12.5px;
+  font-style: normal;
+  line-height: 1.25;
+  list-style: none;
+}
+
+.footer-contact {
+  margin-top: 23px;
+}
+
+.footer-copyright {
+  margin: 32px 0 0;
+  padding-top: 13px;
+  border-top: 1px solid #747474;
+  color: #bdbdbd;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 350px) {
+  .site-footer {
+    padding-inline: 13px;
+  }
+
+  .footer-columns {
+    gap: 14px;
+  }
+
+  .footer-column h2,
+  .footer-contact h2 {
+    font-size: 16px;
+  }
+
+  .footer-column ul,
+  .footer-column address,
+  .footer-contact address {
+    font-size: 11.5px;
   }
 }
 

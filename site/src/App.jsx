@@ -9,6 +9,7 @@ import {
   FaClock,
   FaDesktop,
   FaEnvelope,
+  FaFacebookF,
   FaHeart,
   FaLaptop,
   FaLock,
@@ -353,7 +354,6 @@ export function App() {
           ))}
         </div>
 
-        <button className="secondary-cta" type="button" onClick={goToForm}>ĐĂNG KÝ NGAY <FaArrowRight /></button>
       </section>
 
       <section className="content-section expert-section reveal-on-scroll" aria-labelledby="expert-section-title">
@@ -488,6 +488,53 @@ export function App() {
           </form>
         )}
       </section>
+
+      <footer className="site-footer">
+        <a className="footer-brand" href="#top" aria-label="TeenCare - về đầu trang">
+          <img src="/assets/teencare-logo-official.png" alt="TeenCare" />
+          <img className="footer-brand__light" src="/assets/teencare-logo-official.png" alt="" aria-hidden="true" />
+        </a>
+
+        <div className="footer-social">
+          <strong>Theo dõi chúng tôi:</strong>
+          <a href="https://www.facebook.com/teencare.vn" target="_blank" rel="noreferrer" aria-label="Theo dõi TeenCare trên Facebook">
+            <FaFacebookF aria-hidden="true" />
+          </a>
+        </div>
+
+        <div className="footer-columns">
+          <section className="footer-column" aria-labelledby="footer-about-title">
+            <h2 id="footer-about-title">Về chúng tôi</h2>
+            <ul>
+              <li>Hệ sinh thái</li>
+              <li>Hướng dẫn thanh toán</li>
+              <li>Bảng giá</li>
+              <li>Liên hệ</li>
+              <li>Tuyển dụng</li>
+              <li>Điều khoản dịch vụ</li>
+            </ul>
+          </section>
+
+          <section className="footer-column" aria-labelledby="footer-office-title">
+            <h2 id="footer-office-title">Văn phòng</h2>
+            <address>
+              <span>TP. Hà Nội (Trụ sở chính)</span>
+              <span>Philippines</span>
+              <span>Singapore</span>
+            </address>
+          </section>
+        </div>
+
+        <section className="footer-contact" aria-labelledby="footer-contact-title">
+          <h2 id="footer-contact-title">Liên hệ</h2>
+          <address>
+            <span>Hotline: 1900 099 900</span>
+            <span>Email: info@teencare.vn</span>
+          </address>
+        </section>
+
+        <p className="footer-copyright">©2026 by TeenCare VietNam</p>
+      </footer>
 
       <button className="sticky-cta" type="button" onClick={goToForm} aria-label="Đăng ký tham gia hội thảo">
         <span>ĐĂNG KÝ NGAY</span>
