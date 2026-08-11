@@ -215,7 +215,7 @@ p {
   min-height: 72px;
   grid-template-columns: max-content max-content;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   margin: 0 auto 16px;
   padding: 8px 14px;
   border: 1px solid #f0cd92;
@@ -257,6 +257,7 @@ p {
 
 .compact-event-item:nth-child(1) {
   grid-column: 1 / -1;
+  justify-content: center;
   padding-bottom: 7px;
   border-bottom: 1px solid #f0ddb8;
 }

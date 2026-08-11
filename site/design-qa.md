@@ -279,4 +279,16 @@ No actionable P0, P1, or P2 findings remain for the webinar schedule or session 
 
 No actionable P0, P1, or P2 findings remain for this revision.
 
+### Pass 19 — centered Section 1 schedule content — passed
+
+- Source visual truth: `C:\Users\Admin\AppData\Local\Temp\codex-clipboard-bc57b6df-cea7-49aa-9e87-47b527f38362.png` (463 × 97 px), showing the schedule content aligned too far left inside its capsule.
+- Browser-rendered implementation: `E:\webinarladi\site\audit\section1-schedule-centered.png` at a 491 × 730 CSS viewport and device pixel ratio 1.
+- Focused before/after comparison: `E:\webinarladi\site\audit\section1-schedule-centering-comparison.png`; both visible capsule states were placed in one comparison input.
+- Fix: changed the compact event grid from start justification to centered justification and centered the spanning first row without changing typography, content, icons, borders, colors, or component width.
+- Post-fix geometry: the first row has equal 50 px left and right space inside the 378 px capsule. The combined second-row grid also begins and ends at the same 50 px inset, preserving the separator and balanced spacing.
+- Required fidelity surfaces: typography and copy are unchanged; spacing is now optically centered; navy/orange/cream tokens remain intact; the icon-library assets remain sharp; no wrapping, clipping, or horizontal overflow is visible.
+- Browser console errors and warnings checked: none. Production build and all four Sites packaging tests passed.
+
+No actionable P0, P1, or P2 findings remain for the Section 1 schedule alignment.
+
 final result: passed
