@@ -180,6 +180,24 @@ export function App() {
     };
   }, [activeExpert]);
 
+  useEffect(() => {
+    const targets = document.querySelectorAll(".reveal-on-scroll");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px" },
+    );
+
+    targets.forEach((target) => observer.observe(target));
+    return () => observer.disconnect();
+  }, []);
+
   function goToForm() {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -220,6 +238,12 @@ export function App() {
   return (
     <main className="landing-page" id="top">
       <section className="hero-section" aria-labelledby="hero-title">
+        <div className="hero-decor" aria-hidden="true">
+          <span className="hero-orb hero-orb--one" />
+          <span className="hero-orb hero-orb--two" />
+          <span className="hero-spark hero-spark--one">✦</span>
+          <span className="hero-spark hero-spark--two">✦</span>
+        </div>
         <div className="hero-header">
           <a className="brand" href="#top" aria-label="TeenCare">
             <img src="/assets/teencare-logo-official.png" alt="TeenCare" />
@@ -251,7 +275,7 @@ export function App() {
         </figure>
       </section>
 
-      <section className="content-section problems-section" aria-labelledby="problems-title">
+      <section className="content-section problems-section reveal-on-scroll" aria-labelledby="problems-title">
         <div className="section-heading">
           <h2 id="problems-title">BA MẸ CÓ ĐANG...?</h2>
           <div className="heading-rule" aria-hidden="true"></div>
@@ -313,7 +337,7 @@ export function App() {
         </aside>
       </section>
 
-      <section className="content-section outcomes-section" aria-labelledby="outcomes-title">
+      <section className="content-section outcomes-section reveal-on-scroll" aria-labelledby="outcomes-title">
         <div className="section-heading">
           <h2 id="outcomes-title">SAU HỘI THẢO, BA MẸ NẮM ĐƯỢC GÌ?</h2>
           <div className="heading-rule" aria-hidden="true"></div>
@@ -332,7 +356,7 @@ export function App() {
         <button className="secondary-cta" type="button" onClick={goToForm}>ĐĂNG KÝ NGAY <FaArrowRight /></button>
       </section>
 
-      <section className="content-section expert-section" aria-labelledby="expert-section-title">
+      <section className="content-section expert-section reveal-on-scroll" aria-labelledby="expert-section-title">
         <div className="section-heading">
           <h2 id="expert-section-title">ĐỘI NGŨ CHUYÊN GIA ĐỒNG HÀNH CÙNG BA MẸ</h2>
           <div className="heading-rule" aria-hidden="true"></div>
@@ -426,7 +450,7 @@ export function App() {
         </>}
       </section>
 
-      <section className="registration-section" id="dang-ky" ref={formRef} aria-labelledby="registration-title">
+      <section className="registration-section reveal-on-scroll" id="dang-ky" ref={formRef} aria-labelledby="registration-title">
         <div className="section-heading">
           <h2 id="registration-title">GIỮ CHỖ THAM GIA HỘI THẢO</h2>
           <div className="heading-rule" aria-hidden="true"></div>
@@ -464,6 +488,11 @@ export function App() {
           </form>
         )}
       </section>
+
+      <button className="sticky-cta" type="button" onClick={goToForm} aria-label="Đăng ký tham gia hội thảo">
+        <span>ĐĂNG KÝ NGAY</span>
+        <FaArrowRight aria-hidden="true" />
+      </button>
     </main>
   );
 }
