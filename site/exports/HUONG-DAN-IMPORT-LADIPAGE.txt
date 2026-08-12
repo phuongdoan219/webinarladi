@@ -1,0 +1,12 @@
+HƯỚNG DẪN IMPORT VÀO LADIPAGE
+
+Khuyến nghị dùng: teencare-webinar-ladipage.zip
+
+1. Vào LadiPage > Tạo Landing Page > HTML To LadiPage.
+2. Chọn Tải file HTML/Zip và tải file teencare-webinar-ladipage.zip.
+3. Chọn chế độ Cơ bản để giữ nguyên giao diện, hiệu ứng, carousel và sticky CTA.
+4. Sau khi chuyển đổi xong, mở cấu hình form và chọn kênh lưu dữ liệu phù hợp.
+5. Xem trước toàn bộ trang trước khi xuất bản.
+
+File teencare-webinar-ladipage.html là bản một-file độc lập đã nhúng ảnh trực tiếp.
+Nếu LadiPage giới hạn dung lượng file HTML, hãy sử dụng bản ZIP được khuyến nghị.

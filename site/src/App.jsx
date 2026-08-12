@@ -17,6 +17,12 @@ import {
   FaSeedling,
   FaUserGroup,
 } from "react-icons/fa6";
+import {
+  createEventId,
+  getAttribution,
+  trackLead,
+  trackRegistrationCta,
+} from "./tracking.js";
 
 const eventDetails = [
   { icon: FaCalendarDays, label: "Ngày tổ chức", value: "[Ngày tổ chức]" },
@@ -104,7 +110,9 @@ const experts = [
   {
     name: "CÔ HOÀNG LINH",
     role: "NHÀ SÁNG LẬP TEENCARE",
-    image: "/assets/expert-hoang-linh-gradient.png",
+    image: "/assets/expert-hoang-linh-gradient-opt-a540b647.webp",
+    width: 860,
+    height: 645,
     imageAlt: "Chân dung Cô Hoàng Linh",
     credentials: [
       "Nhà sáng lập, Chủ tịch Tổ chức Thúc đẩy Bình đẳng giới Việt Nam VOGE.",
@@ -115,7 +123,9 @@ const experts = [
   {
     name: "CÔ GIANG ĐẶNG",
     role: "HIỆU TRƯỞNG",
-    image: "/assets/expert-giang-dang-gradient.png",
+    image: "/assets/expert-giang-dang-gradient-opt-5b396c1f.webp",
+    width: 760,
+    height: 1013,
     imageAlt: "Chân dung Cô Giang Đặng",
     credentials: [
       "Chuyên gia cố vấn hàng loạt dự án: FEMALE LEAD - đối tác Bộ Ngoại giao Hoa Kỳ, Nhà Nhiều Cột - đối tác chính phủ Úc...",
@@ -129,7 +139,9 @@ const experts = [
   {
     name: "THẦY TÚ NGUYỄN",
     role: "MENTOR",
-    image: "/assets/expert-tu-nguyen-gradient.png",
+    image: "/assets/expert-tu-nguyen-gradient-opt-2fe640ef.webp",
+    width: 760,
+    height: 1013,
     imageAlt: "Chân dung Thầy Tú Nguyễn",
     credentials: [
       "Thạc sĩ Giáo dục tại Đại học College London, London, Vương quốc Anh",
@@ -155,17 +167,6 @@ export function App() {
   const [problemCarouselHeight, setProblemCarouselHeight] = useState(null);
   const [activeExpert, setActiveExpert] = useState(0);
   const [carouselHeight, setCarouselHeight] = useState(null);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    fetch(registrationEndpoint, {
-      method: "GET",
-      cache: "no-store",
-      signal: controller.signal,
-    }).catch(() => {});
-
-    return () => controller.abort();
-  }, []);
 
   useEffect(() => {
     function updateProblemHeight() {
@@ -213,7 +214,8 @@ export function App() {
     return () => observer.disconnect();
   }, []);
 
-  function goToForm() {
+  function goToForm(source) {
+    trackRegistrationCta(source);
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -226,10 +228,15 @@ export function App() {
     try {
       const formData = new FormData(form);
       const selectedSession = formData.get("session");
+      const eventId = createEventId();
       const response = await fetch(registrationEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(formData)),
+        body: JSON.stringify({
+          ...Object.fromEntries(formData),
+          attribution: getAttribution(),
+          eventId,
+        }),
       });
       const result = await response.json();
 
@@ -237,8 +244,11 @@ export function App() {
         throw new Error(result.error || "Không thể lưu đăng ký");
       }
 
+      trackLead({ session: selectedSession, eventId });
       form.reset();
-      window.location.assign(`/cam-on?session=${encodeURIComponent(selectedSession)}`);
+      window.setTimeout(() => {
+        window.location.assign(`/cam-on?session=${encodeURIComponent(selectedSession)}`);
+      }, 180);
     } catch {
       setSubmitError("Chưa thể gửi đăng ký. Ba mẹ vui lòng kiểm tra kết nối mạng và thử lại.");
     } finally {
@@ -285,9 +295,9 @@ export function App() {
         </div>
         <div className="hero-header">
           <a className="brand" href="#top" aria-label="TeenCare">
-            <img src="/assets/teencare-logo-official.png" alt="TeenCare" />
+            <img src="/assets/teencare-logo-official-opt-f528fa8c.webp" width="400" height="141" alt="TeenCare" />
           </a>
-          <button className="hero-header-cta" type="button" onClick={goToForm}>ĐĂNG KÝ NGAY</button>
+          <button className="hero-header-cta" type="button" onClick={() => goToForm("hero_header")}>ĐĂNG KÝ NGAY</button>
         </div>
 
         <p className="eyebrow">HỘI THẢO TRỰC TUYẾN DÀNH CHO PHỤ HUYNH</p>
@@ -305,12 +315,20 @@ export function App() {
 
         <CompactEventInfo />
 
-        <button className="cta-button" type="button" onClick={goToForm}>
+        <button className="cta-button" type="button" onClick={() => goToForm("hero_primary") }>
           <span>ĐĂNG KÝ THAM GIA</span><FaArrowRight aria-hidden="true" />
         </button>
 
         <figure className="hero-mother-image">
-          <img src="/assets/hero-mother-daughter-tablet.png" alt="Người mẹ và con gái tuổi teen tươi cười, cùng sử dụng máy tính bảng" />
+          <img
+            src="/assets/hero-mother-daughter-tablet-opt-4c046d32.webp"
+            width="860"
+            height="1147"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            alt="Người mẹ và con gái tuổi teen tươi cười, cùng sử dụng máy tính bảng"
+          />
         </figure>
       </section>
 
@@ -337,7 +355,7 @@ export function App() {
                   aria-label={`${index + 1} trên ${problems.length}: ${problem.title}`}
                 >
                   <div className="source-crop problem-photo" role="img" aria-label={problem.imageLabel}>
-                    <img src={problem.image} alt="" />
+                    <img src={problem.image} width="400" height="242" loading="lazy" decoding="async" alt="" />
                   </div>
                   <div className="story-copy">
                     <h3>{problem.title}</h3>
@@ -420,6 +438,10 @@ export function App() {
                     <img
                       src={expert.image}
                       alt={expert.imageAlt}
+                      width={expert.width}
+                      height={expert.height}
+                      loading="lazy"
+                      decoding="async"
                       onLoad={() => {
                         if (index === activeExpert) setCarouselHeight(expertSlideRefs.current[index]?.offsetHeight ?? null);
                       }}
@@ -548,8 +570,8 @@ export function App() {
 
       <footer className="site-footer">
         <a className="footer-brand" href="#top" aria-label="TeenCare - về đầu trang">
-          <img src="/assets/teencare-logo-official.png" alt="TeenCare" />
-          <img className="footer-brand__light" src="/assets/teencare-logo-official.png" alt="" aria-hidden="true" />
+          <img src="/assets/teencare-logo-official-opt-f528fa8c.webp" width="400" height="141" loading="lazy" decoding="async" alt="TeenCare" />
+          <img className="footer-brand__light" src="/assets/teencare-logo-official-opt-f528fa8c.webp" width="400" height="141" loading="lazy" decoding="async" alt="" aria-hidden="true" />
         </a>
 
         <div className="footer-social">
@@ -593,7 +615,7 @@ export function App() {
         <p className="footer-copyright">©2026 by TeenCare VietNam</p>
       </footer>
 
-      <button className="sticky-cta" type="button" onClick={goToForm} aria-label="Đăng ký tham gia hội thảo">
+      <button className="sticky-cta" type="button" onClick={() => goToForm("sticky_cta")} aria-label="Đăng ký tham gia hội thảo">
         <span>ĐĂNG KÝ NGAY</span>
         <FaArrowRight aria-hidden="true" />
       </button>

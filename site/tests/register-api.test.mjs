@@ -65,6 +65,8 @@ test("forwards a valid registration to Google Sheets", async () => {
           phone: "0900000000",
           email: "test@example.com",
           expectation: "Hiểu con hơn",
+          eventId: "lead-test-123",
+          attribution: { utm_source: "facebook", utm_campaign: "webinar-test" },
         },
       },
       response,
@@ -73,6 +75,9 @@ test("forwards a valid registration to Google Sheets", async () => {
     assert.equal(response.statusCode, 200);
     assert.deepEqual(response.payload, { ok: true });
     assert.equal(forwardedBody.get("phone"), "'0900000000");
+    assert.equal(forwardedBody.get("eventId"), "lead-test-123");
+    assert.equal(forwardedBody.get("utm_source"), "facebook");
+    assert.equal(forwardedBody.get("utm_campaign"), "webinar-test");
   } finally {
     globalThis.fetch = originalFetch;
   }

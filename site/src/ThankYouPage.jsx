@@ -28,7 +28,7 @@ export function ThankYouPage() {
 
       <header className="thank-you-header">
         <a href="/" aria-label="TeenCare - về trang chủ">
-          <img src="/assets/teencare-logo-official.png" alt="TeenCare" />
+          <img src="/assets/teencare-logo-official-opt-f528fa8c.webp" width="400" height="141" alt="TeenCare" />
         </a>
       </header>
 

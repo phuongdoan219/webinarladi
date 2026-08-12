@@ -1,0 +1,1473 @@
+{
+  "standard": [
+    {
+      "elapsed": 3281,
+      "metrics": {
+        "nav": {
+          "name": "https://customer.teencare.vn/webbinar",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 883.1000000238419,
+          "navigationId": 3629,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "h2",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "br",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0.6000000238418579,
+          "domainLookupStart": 1.5,
+          "domainLookupEnd": 39.400000005960464,
+          "connectStart": 39.400000005960464,
+          "secureConnectionStart": 45.30000001192093,
+          "connectEnd": 76.2000000178814,
+          "requestStart": 76.30000001192093,
+          "responseStart": 89.40000000596046,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 89.40000000596046,
+          "responseEnd": 102,
+          "transferSize": 20760,
+          "encodedBodySize": 20460,
+          "decodedBodySize": 123541,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 0,
+          "unloadEventEnd": 0,
+          "domInteractive": 442.30000001192093,
+          "domContentLoadedEventStart": 442.30000001192093,
+          "domContentLoadedEventEnd": 445.5,
+          "domComplete": 883,
+          "loadEventStart": 883.1000000238419,
+          "loadEventEnd": 883.1000000238419,
+          "type": "navigate",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "low"
+          }
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "entryType": "paint",
+            "startTime": 944,
+            "duration": 0,
+            "navigationId": 3629,
+            "paintTime": 602.8000000119209,
+            "presentationTime": 944
+          },
+          {
+            "name": "first-contentful-paint",
+            "entryType": "paint",
+            "startTime": 944,
+            "duration": 0,
+            "navigationId": 3629,
+            "paintTime": 602.8000000119209,
+            "presentationTime": 944
+          }
+        ],
+        "dom": {
+          "scripts": 7,
+          "images": 0,
+          "links": 16,
+          "iframes": 0,
+          "htmlLength": 122981
+        },
+        "globals": {
+          "fbq": "undefined",
+          "gtag": "undefined",
+          "ttq": "undefined",
+          "dataLayer": false
+        }
+      },
+      "responseCount": 16,
+      "knownSizes": 1497346,
+      "byType": {
+        "document": 1,
+        "image": 3,
+        "script": 2,
+        "stylesheet": 1,
+        "font": 4,
+        "xhr": 1,
+        "other": 4
+      },
+      "tracking": [
+        {
+          "url": "https://a.ladipage.com/event",
+          "status": 200,
+          "type": "xhr",
+          "contentType": "text/plain; charset=utf-8",
+          "contentLength": 0,
+          "cacheControl": "",
+          "server": ""
+        }
+      ],
+      "largest": [
+        {
+          "url": "https://w.ladicdn.com/s750x650/5ff67f31a01f980011c31e11/img-46-20260701101427-9p5gj.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1070268,
+          "cacheControl": "public, max-age=31453375",
+          "server": "nginx"
+        },
+        {
+          "url": "https://w.ladicdn.com/v5/source/ladipagev3.min.js?v=1786414626441",
+          "status": 200,
+          "type": "script",
+          "contentType": "text/javascript",
+          "contentLength": 140820,
+          "cacheControl": "public, max-age=31142169",
+          "server": "nginx"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 85272,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 48432,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://w.ladicdn.com/v5/source/ladipage.formdata.min.js?v=1786414626441",
+          "status": 200,
+          "type": "script",
+          "contentType": "text/javascript",
+          "contentLength": 36701,
+          "cacheControl": "public, max-age=30313259",
+          "server": "nginx"
+        },
+        {
+          "url": "https://w.ladicdn.com/s450x350/5ff67f31a01f980011c31e11/logo-20260304095328-5eipg.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 28707,
+          "cacheControl": "public, max-age=27719751",
+          "server": "nginx/1.26.3"
+        },
+        {
+          "url": "https://w.ladicdn.com/5ff67f31a01f980011c31e11/favicon-20251223021146-ablme.png",
+          "status": 200,
+          "type": "other",
+          "contentType": "image/png",
+          "contentLength": 25323,
+          "cacheControl": "public, max-age=28586199",
+          "server": "nginx"
+        },
+        {
+          "url": "https://w.ladicdn.com/5ff67f31a01f980011c31e11/favicon-20251223021146-ablme.png",
+          "status": 200,
+          "type": "other",
+          "contentType": "image/png",
+          "contentLength": 25323,
+          "cacheControl": "public, max-age=28586199",
+          "server": "nginx"
+        },
+        {
+          "url": "https://w.ladicdn.com/s350x350/5ff67f31a01f980011c31e11/star-20251028041857-wq7zo.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 13044,
+          "cacheControl": "public, max-age=28491940",
+          "server": "nginx/1.27.5"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVPSTAyLFyeg_IDWvOJmVES_Hw3BXoYZ7Aj.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 12908,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 10280,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://static.ladipage.net/5ff67f31a01f980011c31e11/favicon-20251223021146-ablme.png",
+          "status": 301,
+          "type": "other",
+          "contentType": "text/html",
+          "contentLength": 134,
+          "cacheControl": "",
+          "server": "awselb/2.0"
+        },
+        {
+          "url": "https://static.ladipage.net/5ff67f31a01f980011c31e11/favicon-20251223021146-ablme.png",
+          "status": 301,
+          "type": "other",
+          "contentType": "text/html",
+          "contentLength": 134,
+          "cacheControl": "",
+          "server": "awselb/2.0"
+        },
+        {
+          "url": "https://customer.teencare.vn/webbinar",
+          "status": 200,
+          "type": "document",
+          "contentType": "text/html",
+          "contentLength": 0,
+          "cacheControl": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0",
+          "server": "openresty"
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&family=Inter:wght@400;700&display=swap",
+          "status": 200,
+          "type": "stylesheet",
+          "contentType": "text/css; charset=utf-8",
+          "contentLength": 0,
+          "cacheControl": "private, max-age=86400, stale-while-revalidate=604800",
+          "server": "ESF"
+        }
+      ]
+    },
+    {
+      "elapsed": 4063,
+      "metrics": {
+        "nav": {
+          "name": "https://customer.teencare.vn/webbinar",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 1600.4000000059605,
+          "navigationId": 2327,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "h2",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "br",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 1,
+          "domainLookupStart": 2.0999999940395355,
+          "domainLookupEnd": 23.200000017881393,
+          "connectStart": 23.200000017881393,
+          "secureConnectionStart": 27.80000001192093,
+          "connectEnd": 74.7000000178814,
+          "requestStart": 75.40000000596046,
+          "responseStart": 85.7000000178814,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 85.7000000178814,
+          "responseEnd": 96.09999999403954,
+          "transferSize": 20760,
+          "encodedBodySize": 20460,
+          "decodedBodySize": 123541,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 0,
+          "unloadEventEnd": 0,
+          "domInteractive": 888.9000000059605,
+          "domContentLoadedEventStart": 889,
+          "domContentLoadedEventEnd": 903.4000000059605,
+          "domComplete": 1600.2000000178814,
+          "loadEventStart": 1600.300000011921,
+          "loadEventEnd": 1600.4000000059605,
+          "type": "navigate",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "high"
+          }
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "entryType": "paint",
+            "startTime": 388,
+            "duration": 0,
+            "navigationId": 2327,
+            "paintTime": 300.2000000178814,
+            "presentationTime": 388
+          },
+          {
+            "name": "first-contentful-paint",
+            "entryType": "paint",
+            "startTime": 388,
+            "duration": 0,
+            "navigationId": 2327,
+            "paintTime": 300.2000000178814,
+            "presentationTime": 388
+          }
+        ],
+        "dom": {
+          "scripts": 7,
+          "images": 0,
+          "links": 16,
+          "iframes": 0,
+          "htmlLength": 122981
+        },
+        "globals": {
+          "fbq": "undefined",
+          "gtag": "undefined",
+          "ttq": "undefined",
+          "dataLayer": false
+        }
+      },
+      "responseCount": 16,
+      "knownSizes": 1497346,
+      "byType": {
+        "document": 1,
+        "image": 3,
+        "script": 2,
+        "stylesheet": 1,
+        "font": 4,
+        "xhr": 1,
+        "other": 4
+      },
+      "tracking": [
+        {
+          "url": "https://a.ladipage.com/event",
+          "status": 200,
+          "type": "xhr",
+          "contentType": "text/plain; charset=utf-8",
+          "contentLength": 0,
+          "cacheControl": "",
+          "server": ""
+        }
+      ],
+      "largest": [
+        {
+          "url": "https://w.ladicdn.com/s750x650/5ff67f31a01f980011c31e11/img-46-20260701101427-9p5gj.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1070268,
+          "cacheControl": "public, max-age=31453371",
+          "server": "nginx"
+        },
+        {
+          "url": "https://w.ladicdn.com/v5/source/ladipagev3.min.js?v=1786414626441",
+          "status": 200,
+          "type": "script",
+          "contentType": "text/javascript",
+          "contentLength": 140820,
+          "cacheControl": "public, max-age=31142165",
+          "server": "nginx"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 85272,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 48432,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://w.ladicdn.com/v5/source/ladipage.formdata.min.js?v=1786414626441",
+          "status": 200,
+          "type": "script",
+          "contentType": "text/javascript",
+          "contentLength": 36701,
+          "cacheControl": "public, max-age=30313255",
+          "server": "nginx"
+        },
+        {
+          "url": "https://w.ladicdn.com/s450x350/5ff67f31a01f980011c31e11/logo-20260304095328-5eipg.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 28707,
+          "cacheControl": "public, max-age=27719747",
+          "server": "nginx/1.26.3"
+        },
+        {
+          "url": "https://w.ladicdn.com/5ff67f31a01f980011c31e11/favicon-20251223021146-ablme.png",
+          "status": 200,
+          "type": "other",
+          "contentType": "image/png",
+          "contentLength": 25323,
+          "cacheControl": "public, max-age=28586195",
+          "server": "nginx"
+        },
+        {
+          "url": "https://w.ladicdn.com/5ff67f31a01f980011c31e11/favicon-20251223021146-ablme.png",
+          "status": 200,
+          "type": "other",
+          "contentType": "image/png",
+          "contentLength": 25323,
+          "cacheControl": "public, max-age=28586195",
+          "server": "nginx"
+        },
+        {
+          "url": "https://w.ladicdn.com/s350x350/5ff67f31a01f980011c31e11/star-20251028041857-wq7zo.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 13044,
+          "cacheControl": "public, max-age=28491936",
+          "server": "nginx/1.27.5"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVPSTAyLFyeg_IDWvOJmVES_Hw3BXoYZ7Aj.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 12908,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 10280,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://static.ladipage.net/5ff67f31a01f980011c31e11/favicon-20251223021146-ablme.png",
+          "status": 301,
+          "type": "other",
+          "contentType": "text/html",
+          "contentLength": 134,
+          "cacheControl": "",
+          "server": "awselb/2.0"
+        },
+        {
+          "url": "https://static.ladipage.net/5ff67f31a01f980011c31e11/favicon-20251223021146-ablme.png",
+          "status": 301,
+          "type": "other",
+          "contentType": "text/html",
+          "contentLength": 134,
+          "cacheControl": "",
+          "server": "awselb/2.0"
+        },
+        {
+          "url": "https://customer.teencare.vn/webbinar",
+          "status": 200,
+          "type": "document",
+          "contentType": "text/html",
+          "contentLength": 0,
+          "cacheControl": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0",
+          "server": "openresty"
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&family=Inter:wght@400;700&display=swap",
+          "status": 200,
+          "type": "stylesheet",
+          "contentType": "text/css; charset=utf-8",
+          "contentLength": 0,
+          "cacheControl": "private, max-age=86400, stale-while-revalidate=604800",
+          "server": "ESF"
+        }
+      ]
+    },
+    {
+      "elapsed": 3508,
+      "metrics": {
+        "nav": {
+          "name": "https://customer.teencare.vn/webbinar",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 1110.5,
+          "navigationId": 9985,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "h2",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "br",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 1.600000023841858,
+          "domainLookupStart": 3.4000000059604645,
+          "domainLookupEnd": 28.700000017881393,
+          "connectStart": 28.700000017881393,
+          "secureConnectionStart": 35.20000001788139,
+          "connectEnd": 69.90000000596046,
+          "requestStart": 70.10000002384186,
+          "responseStart": 80.5,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 80.5,
+          "responseEnd": 771.7000000178814,
+          "transferSize": 20760,
+          "encodedBodySize": 20460,
+          "decodedBodySize": 123541,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 0,
+          "unloadEventEnd": 0,
+          "domInteractive": 1058.7000000178814,
+          "domContentLoadedEventStart": 1058.9000000059605,
+          "domContentLoadedEventEnd": 1062.5,
+          "domComplete": 1110.4000000059605,
+          "loadEventStart": 1110.5,
+          "loadEventEnd": 1110.5,
+          "type": "navigate",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "high"
+          }
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "entryType": "paint",
+            "startTime": 568,
+            "duration": 0,
+            "navigationId": 9985,
+            "paintTime": 474.5,
+            "presentationTime": 568
+          },
+          {
+            "name": "first-contentful-paint",
+            "entryType": "paint",
+            "startTime": 568,
+            "duration": 0,
+            "navigationId": 9985,
+            "paintTime": 474.5,
+            "presentationTime": 568
+          }
+        ],
+        "dom": {
+          "scripts": 7,
+          "images": 0,
+          "links": 16,
+          "iframes": 0,
+          "htmlLength": 122981
+        },
+        "globals": {
+          "fbq": "undefined",
+          "gtag": "undefined",
+          "ttq": "undefined",
+          "dataLayer": false
+        }
+      },
+      "responseCount": 16,
+      "knownSizes": 1496761,
+      "byType": {
+        "document": 1,
+        "stylesheet": 1,
+        "script": 2,
+        "font": 4,
+        "image": 3,
+        "xhr": 1,
+        "other": 4
+      },
+      "tracking": [
+        {
+          "url": "https://a.ladipage.com/event",
+          "status": 200,
+          "type": "xhr",
+          "contentType": "text/plain; charset=utf-8",
+          "contentLength": 0,
+          "cacheControl": "",
+          "server": ""
+        }
+      ],
+      "largest": [
+        {
+          "url": "https://w.ladicdn.com/s750x650/5ff67f31a01f980011c31e11/img-46-20260701101427-9p5gj.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1070268,
+          "cacheControl": "public, max-age=31525546",
+          "server": "nginx"
+        },
+        {
+          "url": "https://w.ladicdn.com/v5/source/ladipagev3.min.js?v=1786414626441",
+          "status": 200,
+          "type": "script",
+          "contentType": "text/javascript",
+          "contentLength": 140820,
+          "cacheControl": "public, max-age=31142161",
+          "server": "nginx"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7W0Q5n-wU.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 85272,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 48432,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://w.ladicdn.com/v5/source/ladipage.formdata.min.js?v=1786414626441",
+          "status": 200,
+          "type": "script",
+          "contentType": "text/javascript",
+          "contentLength": 36701,
+          "cacheControl": "public, max-age=30313250",
+          "server": "nginx"
+        },
+        {
+          "url": "https://w.ladicdn.com/s450x350/5ff67f31a01f980011c31e11/logo-20260304095328-5eipg.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 29086,
+          "cacheControl": "public, max-age=31226407",
+          "server": "nginx"
+        },
+        {
+          "url": "https://w.ladicdn.com/5ff67f31a01f980011c31e11/favicon-20251223021146-ablme.png",
+          "status": 200,
+          "type": "other",
+          "contentType": "image/png",
+          "contentLength": 25323,
+          "cacheControl": "public, max-age=31311181",
+          "server": "nginx"
+        },
+        {
+          "url": "https://w.ladicdn.com/5ff67f31a01f980011c31e11/favicon-20251223021146-ablme.png",
+          "status": 200,
+          "type": "other",
+          "contentType": "image/png",
+          "contentLength": 25323,
+          "cacheControl": "public, max-age=31311181",
+          "server": "nginx"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVPSTAyLFyeg_IDWvOJmVES_Hw3BXoYZ7Aj.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 12908,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://w.ladicdn.com/s350x350/5ff67f31a01f980011c31e11/star-20251028041857-wq7zo.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 12080,
+          "cacheControl": "public, max-age=31309840",
+          "server": "nginx"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7W0Q5n-wU.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 10280,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://static.ladipage.net/5ff67f31a01f980011c31e11/favicon-20251223021146-ablme.png",
+          "status": 301,
+          "type": "other",
+          "contentType": "text/html",
+          "contentLength": 134,
+          "cacheControl": "",
+          "server": "awselb/2.0"
+        },
+        {
+          "url": "https://static.ladipage.net/5ff67f31a01f980011c31e11/favicon-20251223021146-ablme.png",
+          "status": 301,
+          "type": "other",
+          "contentType": "text/html",
+          "contentLength": 134,
+          "cacheControl": "",
+          "server": "awselb/2.0"
+        },
+        {
+          "url": "https://customer.teencare.vn/webbinar",
+          "status": 200,
+          "type": "document",
+          "contentType": "text/html",
+          "contentLength": 0,
+          "cacheControl": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0",
+          "server": "openresty"
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&family=Inter:wght@400;700&display=swap",
+          "status": 200,
+          "type": "stylesheet",
+          "contentType": "text/css; charset=utf-8",
+          "contentLength": 0,
+          "cacheControl": "private, max-age=86400, stale-while-revalidate=604800",
+          "server": "ESF"
+        }
+      ]
+    }
+  ],
+  "custom": [
+    {
+      "elapsed": 4258,
+      "metrics": {
+        "nav": {
+          "name": "https://webinar.teencare.vn/",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 634.7000000178814,
+          "navigationId": 7617,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "h2",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 1,
+          "domainLookupStart": 1.800000011920929,
+          "domainLookupEnd": 29.600000023841858,
+          "connectStart": 29.600000023841858,
+          "secureConnectionStart": 38.10000002384186,
+          "connectEnd": 106.60000002384186,
+          "requestStart": 106.80000001192093,
+          "responseStart": 141.30000001192093,
+          "firstInterimResponseStart": 141.30000001192093,
+          "finalResponseHeadersStart": 152.5,
+          "responseEnd": 153.2000000178814,
+          "transferSize": 892,
+          "encodedBodySize": 592,
+          "decodedBodySize": 592,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 0,
+          "unloadEventEnd": 0,
+          "domInteractive": 194.80000001192093,
+          "domContentLoadedEventStart": 623.9000000059605,
+          "domContentLoadedEventEnd": 624,
+          "domComplete": 634.5,
+          "loadEventStart": 634.6000000238419,
+          "loadEventEnd": 634.7000000178814,
+          "type": "navigate",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "high"
+          }
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "entryType": "paint",
+            "startTime": 716,
+            "duration": 0,
+            "navigationId": 7617,
+            "paintTime": 630.7000000178814,
+            "presentationTime": 716
+          },
+          {
+            "name": "first-contentful-paint",
+            "entryType": "paint",
+            "startTime": 1364,
+            "duration": 0,
+            "navigationId": 7617,
+            "paintTime": 886,
+            "presentationTime": 1364
+          }
+        ],
+        "dom": {
+          "scripts": 1,
+          "images": 10,
+          "links": 1,
+          "iframes": 0,
+          "htmlLength": 26207
+        },
+        "globals": {
+          "fbq": "undefined",
+          "gtag": "undefined",
+          "ttq": "undefined",
+          "dataLayer": false
+        }
+      },
+      "responseCount": 31,
+      "knownSizes": 6805342,
+      "byType": {
+        "document": 1,
+        "stylesheet": 2,
+        "script": 1,
+        "image": 8,
+        "font": 18,
+        "fetch": 1
+      },
+      "tracking": [],
+      "largest": [
+        {
+          "url": "https://webinar.teencare.vn/assets/expert-tu-nguyen-gradient.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1727893,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/expert-hoang-linh-gradient.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1578860,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/hero-mother-daughter-tablet.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1558675,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/expert-giang-dang-gradient.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1434990,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/teencare-logo-official.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 198664,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/robotocondensed/v31/ieVl2ZhZI2eCN5jzbjEETS9weq8-19K7DQk6YvM.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 46080,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/problem-khong-biet-goc-re.jpg",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/jpeg",
+          "contentLength": 31978,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/problem-it-chia-se.jpg",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/jpeg",
+          "contentLength": 30969,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/problem-cang-nhac-cang-chong-doi.jpg",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/jpeg",
+          "contentLength": 29833,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/robotocondensed/v31/ieVl2ZhZI2eCN5jzbjEETS9weq8-19y7DQk6YvNkeg.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 28908,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVMSTAyLFyeg_IDWvOJmVES_HSQI281Rb0JcBao.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 13380,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVMSTAyLFyeg_IDWvOJmVES_HSMIG81Rb0JcBao.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 13348,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVMSTAyLFyeg_IDWvOJmVES_HTEJm81Rb0JcBao.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 13324,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVPSTAyLFyeg_IDWvOJmVES_Hw3BXoYZ7Aj.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 12908,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/robotocondensed/v31/ieVl2ZhZI2eCN5jzbjEETS9weq8-1927DQk6YvNkeg.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 12524,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        }
+      ]
+    },
+    {
+      "elapsed": 4394,
+      "metrics": {
+        "nav": {
+          "name": "https://webinar.teencare.vn/",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 795.8000000119209,
+          "navigationId": 9560,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "h2",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 1.199999988079071,
+          "domainLookupStart": 2.300000011920929,
+          "domainLookupEnd": 60.80000001192093,
+          "connectStart": 60.80000001192093,
+          "secureConnectionStart": 147.5,
+          "connectEnd": 222.09999999403954,
+          "requestStart": 222.5,
+          "responseStart": 260.5,
+          "firstInterimResponseStart": 260.5,
+          "finalResponseHeadersStart": 269.69999998807907,
+          "responseEnd": 273.30000001192093,
+          "transferSize": 892,
+          "encodedBodySize": 592,
+          "decodedBodySize": 592,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 0,
+          "unloadEventEnd": 0,
+          "domInteractive": 328.80000001192093,
+          "domContentLoadedEventStart": 789.1999999880791,
+          "domContentLoadedEventEnd": 789.3000000119209,
+          "domComplete": 795.6999999880791,
+          "loadEventStart": 795.8000000119209,
+          "loadEventEnd": 795.8000000119209,
+          "type": "navigate",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "low"
+          }
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "entryType": "paint",
+            "startTime": 820,
+            "duration": 0,
+            "navigationId": 9560,
+            "paintTime": 791.9000000059605,
+            "presentationTime": 820
+          },
+          {
+            "name": "first-contentful-paint",
+            "entryType": "paint",
+            "startTime": 1200,
+            "duration": 0,
+            "navigationId": 9560,
+            "paintTime": 1091,
+            "presentationTime": 1200
+          }
+        ],
+        "dom": {
+          "scripts": 1,
+          "images": 10,
+          "links": 1,
+          "iframes": 0,
+          "htmlLength": 26207
+        },
+        "globals": {
+          "fbq": "undefined",
+          "gtag": "undefined",
+          "ttq": "undefined",
+          "dataLayer": false
+        }
+      },
+      "responseCount": 31,
+      "knownSizes": 6805342,
+      "byType": {
+        "document": 1,
+        "stylesheet": 2,
+        "script": 1,
+        "image": 8,
+        "font": 18,
+        "fetch": 1
+      },
+      "tracking": [],
+      "largest": [
+        {
+          "url": "https://webinar.teencare.vn/assets/expert-tu-nguyen-gradient.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1727893,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/expert-hoang-linh-gradient.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1578860,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/hero-mother-daughter-tablet.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1558675,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/expert-giang-dang-gradient.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1434990,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/teencare-logo-official.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 198664,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/robotocondensed/v31/ieVl2ZhZI2eCN5jzbjEETS9weq8-19K7DQk6YvM.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 46080,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/problem-khong-biet-goc-re.jpg",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/jpeg",
+          "contentLength": 31978,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/problem-it-chia-se.jpg",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/jpeg",
+          "contentLength": 30969,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/problem-cang-nhac-cang-chong-doi.jpg",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/jpeg",
+          "contentLength": 29833,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/robotocondensed/v31/ieVl2ZhZI2eCN5jzbjEETS9weq8-19y7DQk6YvNkeg.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 28908,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVMSTAyLFyeg_IDWvOJmVES_HSQI281Rb0JcBao.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 13380,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVMSTAyLFyeg_IDWvOJmVES_HSMIG81Rb0JcBao.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 13348,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVMSTAyLFyeg_IDWvOJmVES_HTEJm81Rb0JcBao.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 13324,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVPSTAyLFyeg_IDWvOJmVES_Hw3BXoYZ7Aj.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 12908,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/robotocondensed/v31/ieVl2ZhZI2eCN5jzbjEETS9weq8-1927DQk6YvNkeg.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 12524,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        }
+      ]
+    },
+    {
+      "elapsed": 3973,
+      "metrics": {
+        "nav": {
+          "name": "https://webinar.teencare.vn/",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 736.1999999880791,
+          "navigationId": 5100,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "h2",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0.7999999821186066,
+          "domainLookupStart": 1.5999999940395355,
+          "domainLookupEnd": 42.79999998211861,
+          "connectStart": 42.79999998211861,
+          "secureConnectionStart": 113.7999999821186,
+          "connectEnd": 191,
+          "requestStart": 191.69999998807907,
+          "responseStart": 226.2999999821186,
+          "firstInterimResponseStart": 226.2999999821186,
+          "finalResponseHeadersStart": 232.19999998807907,
+          "responseEnd": 236.2999999821186,
+          "transferSize": 892,
+          "encodedBodySize": 592,
+          "decodedBodySize": 592,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 0,
+          "unloadEventEnd": 0,
+          "domInteractive": 292.59999999403954,
+          "domContentLoadedEventStart": 735.7999999821186,
+          "domContentLoadedEventEnd": 735.9000000059605,
+          "domComplete": 736.0999999940395,
+          "loadEventStart": 736.0999999940395,
+          "loadEventEnd": 736.1999999880791,
+          "type": "navigate",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "high"
+          }
+        },
+        "paints": [
+          {
+            "name": "first-paint",
+            "entryType": "paint",
+            "startTime": 716,
+            "duration": 0,
+            "navigationId": 5100,
+            "paintTime": 682,
+            "presentationTime": 716
+          },
+          {
+            "name": "first-contentful-paint",
+            "entryType": "paint",
+            "startTime": 1148,
+            "duration": 0,
+            "navigationId": 5100,
+            "paintTime": 1028.4000000059605,
+            "presentationTime": 1148
+          }
+        ],
+        "dom": {
+          "scripts": 1,
+          "images": 10,
+          "links": 1,
+          "iframes": 0,
+          "htmlLength": 26207
+        },
+        "globals": {
+          "fbq": "undefined",
+          "gtag": "undefined",
+          "ttq": "undefined",
+          "dataLayer": false
+        }
+      },
+      "responseCount": 31,
+      "knownSizes": 6805342,
+      "byType": {
+        "document": 1,
+        "stylesheet": 2,
+        "script": 1,
+        "image": 8,
+        "font": 18,
+        "fetch": 1
+      },
+      "tracking": [],
+      "largest": [
+        {
+          "url": "https://webinar.teencare.vn/assets/expert-tu-nguyen-gradient.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1727893,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/expert-hoang-linh-gradient.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1578860,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/hero-mother-daughter-tablet.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1558675,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/expert-giang-dang-gradient.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 1434990,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/teencare-logo-official.png",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/png",
+          "contentLength": 198664,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/robotocondensed/v31/ieVl2ZhZI2eCN5jzbjEETS9weq8-19K7DQk6YvM.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 46080,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/problem-khong-biet-goc-re.jpg",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/jpeg",
+          "contentLength": 31978,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/problem-it-chia-se.jpg",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/jpeg",
+          "contentLength": 30969,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://webinar.teencare.vn/assets/problem-cang-nhac-cang-chong-doi.jpg",
+          "status": 200,
+          "type": "image",
+          "contentType": "image/jpeg",
+          "contentLength": 29833,
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "server": "Vercel"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/robotocondensed/v31/ieVl2ZhZI2eCN5jzbjEETS9weq8-19y7DQk6YvNkeg.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 28908,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVMSTAyLFyeg_IDWvOJmVES_HSQI281Rb0JcBao.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 13380,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVMSTAyLFyeg_IDWvOJmVES_HSMIG81Rb0JcBao.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 13348,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVMSTAyLFyeg_IDWvOJmVES_HTEJm81Rb0JcBao.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 13324,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/bevietnampro/v12/QdVPSTAyLFyeg_IDWvOJmVES_Hw3BXoYZ7Aj.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 12908,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        },
+        {
+          "url": "https://fonts.gstatic.com/s/robotocondensed/v31/ieVl2ZhZI2eCN5jzbjEETS9weq8-1927DQk6YvNkeg.woff2",
+          "status": 200,
+          "type": "font",
+          "contentType": "font/woff2",
+          "contentLength": 12524,
+          "cacheControl": "public, max-age=31536000",
+          "server": "sffe"
+        }
+      ]
+    }
+  ]
+}
