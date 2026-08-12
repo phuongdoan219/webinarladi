@@ -2,6 +2,10 @@ const GOOGLE_SHEETS_ENDPOINT =
   "https://script.google.com/macros/s/AKfycbzeAKxlB4RbHMQWoEJFbAAI71bDgVs4vyaKh-zEgMIpvp7oDhWBzlxJa_mrQVus9UY/exec";
 
 const SESSION_VALUES = new Set(["thu-5", "chu-nhat", "ca-2"]);
+const ALLOWED_ORIGINS = new Set([
+  "https://webinarladi.vercel.app",
+  "https://webinar.teencare.vn",
+]);
 
 function clean(value, maxLength) {
   return String(value ?? "").trim().slice(0, maxLength);
@@ -9,7 +13,7 @@ function clean(value, maxLength) {
 
 export default async function handler(request, response) {
   const origin = request.headers.origin;
-  if (origin && origin !== "https://webinarladi.vercel.app") {
+  if (origin && !ALLOWED_ORIGINS.has(origin)) {
     return response.status(403).json({ ok: false, error: "Origin not allowed" });
   }
 
