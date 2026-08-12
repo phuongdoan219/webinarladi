@@ -1705,14 +1705,14 @@ body {
 .thank-you-header {
   position: relative;
   z-index: 1;
-  padding: 22px 24px 10px;
+  padding: 18px 20px 6px;
   text-align: center;
 }
 
 .thank-you-header a {
   display: inline-block;
-  width: 170px;
-  height: 52px;
+  width: 150px;
+  height: 46px;
 }
 
 .thank-you-header img {
@@ -1725,8 +1725,8 @@ body {
 .thank-you-next {
   position: relative;
   z-index: 1;
-  margin: 12px 20px 0;
-  padding: 28px 20px;
+  margin: 8px 16px 20px;
+  padding: 24px 18px;
   border: 1px solid rgba(238, 164, 41, 0.42);
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.9);
@@ -1742,15 +1742,15 @@ body {
 
 .thank-you-check {
   display: grid;
-  width: 78px;
-  height: 78px;
-  margin: 0 auto 18px;
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 15px;
   place-items: center;
   border-radius: 50%;
   color: #fff;
   background: linear-gradient(145deg, #ffb51f, #ed7600);
   box-shadow: 0 15px 30px rgba(239, 126, 0, 0.24);
-  font-size: 42px;
+  font-size: 36px;
 }
 
 .thank-you-kicker,
@@ -1765,14 +1765,14 @@ body {
 .thank-you-hero h1 {
   margin-bottom: 12px;
   font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
-  font-size: 33px;
+  font-size: 30px;
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.6px;
 }
 
 .thank-you-intro {
-  margin: 0 auto 24px;
+  margin: 0 auto 18px;
   color: #3b526b;
   font-size: 14px;
   line-height: 1.65;
@@ -1780,7 +1780,7 @@ body {
 
 .thank-you-event {
   display: grid;
-  gap: 9px;
+  gap: 7px;
 }
 
 .thank-you-event > div {
@@ -1788,7 +1788,7 @@ body {
   grid-template-columns: 28px 1fr auto;
   align-items: center;
   gap: 8px;
-  padding: 12px 13px;
+  padding: 10px 12px;
   border: 1px solid #f1dfc1;
   border-radius: 13px;
   background: #fffaf1;
@@ -1866,11 +1866,14 @@ body {
 }
 
 .thank-you-note {
-  margin-top: 22px;
-  padding: 15px;
+  margin-top: 16px;
+  padding: 13px 14px;
   border-left: 4px solid #f49a00;
   border-radius: 12px;
+  color: #53687d;
   background: #fff6e7;
+  font-size: 12px;
+  line-height: 1.55;
 }
 
 .thank-you-note strong {
@@ -1889,7 +1892,7 @@ body {
 .thank-you-actions {
   display: grid;
   gap: 10px;
-  margin-top: 22px;
+  margin-top: 18px;
 }
 
 .thank-you-actions a {
@@ -1937,46 +1940,6 @@ body {
 
 .thank-you-footer strong {
   color: #0a315f;
-}
-
-@media (min-width: 700px) {
-  .thank-you-page {
-    width: min(100%, 760px);
-    padding-bottom: 26px;
-  }
-
-  .thank-you-header {
-    padding-top: 32px;
-  }
-
-  .thank-you-hero,
-  .thank-you-next {
-    margin-right: 42px;
-    margin-left: 42px;
-    padding: 34px 38px;
-  }
-
-  .thank-you-event {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .thank-you-event > div {
-    grid-template-columns: 26px 1fr;
-  }
-
-  .thank-you-event strong {
-    grid-column: 1 / -1;
-    text-align: left;
-  }
-
-  .thank-you-steps {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
-  }
-
-  .thank-you-actions {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
