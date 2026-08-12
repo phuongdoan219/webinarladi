@@ -142,7 +142,7 @@ const experts = [
 ];
 
 export function App() {
-  const registrationEndpoint = "https://script.google.com/macros/s/AKfycbzeAKxlB4RbHMQWoEJFbAAI71bDgVs4vyaKh-zEgMIpvp7oDhWBzlxJa_mrQVus9UY/exec";
+  const registrationEndpoint = "/api/register";
   const formRef = useRef(null);
   const problemCarouselRef = useRef(null);
   const problemSlideRefs = useRef([]);
@@ -208,17 +208,24 @@ export function App() {
 
   async function submitForm(event) {
     event.preventDefault();
+    const form = event.currentTarget;
     setSubmitting(true);
     setSubmitError("");
 
     try {
-      const formData = new FormData(event.currentTarget);
-      await fetch(registrationEndpoint, {
+      const formData = new FormData(form);
+      const response = await fetch(registrationEndpoint, {
         method: "POST",
-        mode: "no-cors",
-        body: new URLSearchParams(formData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(formData)),
       });
-      event.currentTarget.reset();
+      const result = await response.json();
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || "Không thể lưu đăng ký");
+      }
+
+      form.reset();
       setSubmitted(true);
     } catch {
       setSubmitError("Chưa thể gửi đăng ký. Ba mẹ vui lòng kiểm tra kết nối mạng và thử lại.");
