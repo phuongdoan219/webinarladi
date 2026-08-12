@@ -132,17 +132,26 @@ p {
 }
 
 .hero-section h1 {
+  display: grid;
+  gap: 5px;
   margin-bottom: 10px;
   color: #062858;
   font-family: "Be Vietnam Pro", Arial, sans-serif;
-  font-size: clamp(32px, 9vw, 38px);
+  font-size: clamp(23px, 7.2vw, 31px);
   font-weight: 900;
-  line-height: 1.02;
+  line-height: 1.13;
   letter-spacing: -1.2px;
   text-align: center;
 }
 
-.hero-section h1 span {
+.hero-title-line {
+  display: block;
+  min-width: 0;
+  padding-block: 0.08em;
+  white-space: nowrap;
+}
+
+.hero-title-line--accent {
   color: #f18700;
 }
 
@@ -1152,10 +1161,6 @@ textarea:focus-visible {
     padding-inline: 16px;
   }
 
-  .hero-section h1 {
-    font-size: 32px;
-  }
-
   .eyebrow {
     font-size: 11px;
   }
@@ -1269,7 +1274,7 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
-.hero-section h1 span {
+.hero-title-line--accent {
   color: transparent;
   background: linear-gradient(105deg, #f38a00 5%, #ffb000 52%, #e86c00 96%);
   background-clip: text;
@@ -1762,10 +1767,11 @@ body {
 
 .thank-you-hero h1 {
   margin-bottom: 12px;
+  padding-block: 0.08em;
   font-family: "Be Vietnam Pro", Arial, sans-serif;
   font-size: 30px;
   font-weight: 900;
-  line-height: 1.05;
+  line-height: 1.2;
   letter-spacing: -0.6px;
 }
 

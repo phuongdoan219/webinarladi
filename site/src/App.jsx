@@ -302,10 +302,10 @@ export function App() {
 
         <p className="eyebrow">HỘI THẢO TRỰC TUYẾN DÀNH CHO PHỤ HUYNH</p>
 
-        <h1 id="hero-title">
-          ĐỒNG HÀNH CÙNG CON<br />
-          TUỔI DẬY THÌ<br />
-          <span>TRONG THỜI ĐẠI AI</span>
+        <h1 id="hero-title" aria-label="ĐỒNG HÀNH CÙNG CON TUỔI DẬY THÌ TRONG THỜI ĐẠI AI">
+          <span className="hero-title-line" aria-hidden="true">ĐỒNG HÀNH CÙNG CON</span>
+          <span className="hero-title-line" aria-hidden="true">TUỔI DẬY THÌ</span>
+          <span className="hero-title-line hero-title-line--accent" aria-hidden="true">TRONG THỜI ĐẠI AI</span>
         </h1>
         <div className="heading-rule" aria-hidden="true"></div>
 
