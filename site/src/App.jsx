@@ -214,6 +214,7 @@ export function App() {
 
     try {
       const formData = new FormData(form);
+      const selectedSession = formData.get("session");
       const response = await fetch(registrationEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -226,7 +227,7 @@ export function App() {
       }
 
       form.reset();
-      setSubmitted(true);
+      window.location.assign(`/cam-on?session=${encodeURIComponent(selectedSession)}`);
     } catch {
       setSubmitError("Chưa thể gửi đăng ký. Ba mẹ vui lòng kiểm tra kết nối mạng và thử lại.");
     } finally {
