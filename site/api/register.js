@@ -8,14 +8,29 @@ function clean(value, maxLength) {
 }
 
 export default async function handler(request, response) {
-  if (request.method !== "POST") {
-    response.setHeader("Allow", "POST");
-    return response.status(405).json({ ok: false, error: "Method not allowed" });
-  }
-
   const origin = request.headers.origin;
   if (origin && origin !== "https://webinarladi.vercel.app") {
     return response.status(403).json({ ok: false, error: "Origin not allowed" });
+  }
+
+  if (request.method === "GET") {
+    try {
+      await fetch(GOOGLE_SHEETS_ENDPOINT, {
+        method: "GET",
+        redirect: "manual",
+        cache: "no-store",
+      });
+    } catch {
+      // Warming is best-effort; form submission still performs the real check.
+    }
+
+    response.setHeader("Cache-Control", "no-store");
+    return response.status(204).end();
+  }
+
+  if (request.method !== "POST") {
+    response.setHeader("Allow", "GET, POST");
+    return response.status(405).json({ ok: false, error: "Method not allowed" });
   }
 
   const body = typeof request.body === "string" ? JSON.parse(request.body) : request.body || {};

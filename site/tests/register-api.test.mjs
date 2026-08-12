@@ -19,8 +19,31 @@ function createResponse() {
       this.payload = payload;
       return this;
     },
+    end() {
+      return this;
+    },
   };
 }
+
+test("warms the Google Sheet connection before the form is submitted", async () => {
+  const originalFetch = globalThis.fetch;
+  let warmRequest;
+  globalThis.fetch = async (_url, options) => {
+    warmRequest = options;
+    return { status: 302 };
+  };
+
+  try {
+    const response = createResponse();
+    await register({ method: "GET", headers: {} }, response);
+
+    assert.equal(response.statusCode, 204);
+    assert.equal(warmRequest.method, "GET");
+    assert.equal(response.headers["Cache-Control"], "no-store");
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
 
 test("forwards a valid registration to Google Sheets", async () => {
   const originalFetch = globalThis.fetch;

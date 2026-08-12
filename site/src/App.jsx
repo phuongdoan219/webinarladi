@@ -157,6 +157,17 @@ export function App() {
   const [carouselHeight, setCarouselHeight] = useState(null);
 
   useEffect(() => {
+    const controller = new AbortController();
+    fetch(registrationEndpoint, {
+      method: "GET",
+      cache: "no-store",
+      signal: controller.signal,
+    }).catch(() => {});
+
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => {
     function updateProblemHeight() {
       const activeSlide = problemSlideRefs.current[activeProblem];
       if (activeSlide) setProblemCarouselHeight(activeSlide.offsetHeight);
