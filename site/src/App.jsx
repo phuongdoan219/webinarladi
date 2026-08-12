@@ -46,19 +46,19 @@ function CompactEventInfo({ className = "" }) {
 
 const problems = [
   {
-    crop: "problem-photo--one",
+    image: "/assets/problem-it-chia-se.jpg",
     imageLabel: "Mẹ muốn trò chuyện nhưng con ngày càng ít chia sẻ",
     title: "CON NGÀY CÀNG ÍT CHIA SẺ?",
     body: "Con vẫn nói “Con bình thường”, nhưng lại dễ cáu, đóng cửa nhiều hơn và không còn kể những chuyện trước đây từng kể.",
   },
   {
-    crop: "problem-photo--two",
+    image: "/assets/problem-cang-nhac-cang-chong-doi.jpg",
     imageLabel: "Mẹ nhắc nhở con nhưng con phản ứng và chống đối",
     title: "CÀNG NHẮC, CON CÀNG CHỐNG ĐỐI?",
     body: "Học bài, ngủ đúng giờ hay bớt điện thoại trở thành những cuộc giằng co lặp lại mỗi ngày.",
   },
   {
-    crop: "problem-photo--three",
+    image: "/assets/problem-khong-biet-goc-re.jpg",
     imageLabel: "Phụ huynh băn khoăn chưa hiểu vấn đề thật sự của con",
     title: "KHÔNG BIẾT VẤN ĐỀ THẬT SỰ NẰM Ở ĐÂU?",
     body: "Lười học, mê điện thoại hay thiếu tự giác có thể chỉ là biểu hiện bên ngoài của một vấn đề sâu hơn.",
@@ -142,12 +142,15 @@ const experts = [
 ];
 
 export function App() {
+  const registrationEndpoint = "https://script.google.com/macros/s/AKfycbzeAKxlB4RbHMQWoEJFbAAI71bDgVs4vyaKh-zEgMIpvp7oDhWBzlxJa_mrQVus9UY/exec";
   const formRef = useRef(null);
   const problemCarouselRef = useRef(null);
   const problemSlideRefs = useRef([]);
   const carouselRef = useRef(null);
   const expertSlideRefs = useRef([]);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [activeProblem, setActiveProblem] = useState(0);
   const [problemCarouselHeight, setProblemCarouselHeight] = useState(null);
   const [activeExpert, setActiveExpert] = useState(0);
@@ -203,9 +206,25 @@ export function App() {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  function submitForm(event) {
+  async function submitForm(event) {
     event.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      await fetch(registrationEndpoint, {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams(formData),
+      });
+      event.currentTarget.reset();
+      setSubmitted(true);
+    } catch {
+      setSubmitError("Chưa thể gửi đăng ký. Ba mẹ vui lòng kiểm tra kết nối mạng và thử lại.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   function showProblem(index) {
@@ -298,8 +317,8 @@ export function App() {
                   ref={(node) => { problemSlideRefs.current[index] = node; }}
                   aria-label={`${index + 1} trên ${problems.length}: ${problem.title}`}
                 >
-                  <div className={`source-crop problem-photo ${problem.crop}`} role="img" aria-label={problem.imageLabel}>
-                    <img src="/assets/section-problems.png" alt="" />
+                  <div className="source-crop problem-photo" role="img" aria-label={problem.imageLabel}>
+                    <img src={problem.image} alt="" />
                   </div>
                   <div className="story-copy">
                     <h3>{problem.title}</h3>
@@ -499,7 +518,10 @@ export function App() {
               <span>Ba mẹ kỳ vọng điều gì khi tham gia hội thảo? <b>*</b></span>
               <textarea name="expectation" required placeholder="Ví dụ: Tôi muốn hiểu vì sao con ngày càng ít chia sẻ và biết cách trò chuyện để con sẵn sàng mở lòng hơn." />
             </label>
-            <button className="submit-button" type="submit">XÁC NHẬN THAM GIA <FaArrowRight /></button>
+            <button className="submit-button" type="submit" disabled={submitting}>
+              {submitting ? "ĐANG GỬI ĐĂNG KÝ..." : <>XÁC NHẬN THAM GIA <FaArrowRight /></>}
+            </button>
+            {submitError && <p className="form-error" role="alert">{submitError}</p>}
             <p className="consent-note"><FaLock /> Bằng việc đăng ký, ba mẹ đồng ý để TeenCare liên hệ và gửi thông tin liên quan đến hội thảo.</p>
           </form>
         )}
