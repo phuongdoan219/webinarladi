@@ -5,6 +5,10 @@
 - `VITE_GTM_ID`: ID container Google Tag Manager, dạng `GTM-XXXXXXX`.
 - `VITE_META_PIXEL_ID`: ID Meta Pixel chỉ gồm chữ số.
 - `VITE_GA4_ID`: phương án GA4 trực tiếp nếu không dùng GTM.
+- `META_PIXEL_ID`: cùng ID Pixel, dùng riêng ở API phía máy chủ.
+- `META_CAPI_ACCESS_TOKEN`: token Conversion API, chỉ lưu dưới dạng secret trên hosting; tuyệt đối không dùng tiền tố `VITE_`.
+- `META_GRAPH_API_VERSION`: phiên bản Graph API, mặc định `v23.0`.
+- `META_TEST_EVENT_CODE`: không bắt buộc, chỉ bật trong lúc kiểm tra bằng Test Events.
 
 Nếu có `VITE_GTM_ID`, mã nguồn không tải GA4 trực tiếp để tránh đếm hai lần. Hãy tạo Google tag trong GTM, nhập Measurement ID `G-...` và dùng trigger `Initialization - All Pages`.
 
@@ -26,3 +30,5 @@ Nếu có `VITE_GTM_ID`, mã nguồn không tải GA4 trực tiếp để tránh
 5. Dùng Tag Assistant Preview để xác nhận mỗi sự kiện chỉ chạy một lần, sau đó publish container.
 
 Meta Pixel được mã nguồn tải trực tiếp. Dùng Meta Pixel Helper và Events Manager Test Events để xác nhận `PageView`, `RegistrationCtaClick` và `Lead`.
+
+Sự kiện `Lead` phía trình duyệt và máy chủ dùng chung `event_id` để Meta loại bỏ bản ghi trùng. Email và số điện thoại được chuẩn hóa, băm SHA-256 ở API trước khi gửi; token không bao giờ được đưa xuống trình duyệt. Sau khi kiểm tra xong, xóa `META_TEST_EVENT_CODE` để chuyển sang dữ liệu production.

@@ -8,6 +8,91 @@ const ALLOWED_ORIGINS = new Set([
   "https://webinar.teencare.vn",
 ]);
 
+function getHeader(request, name) {
+  if (typeof request.headers?.get === "function") return request.headers.get(name) || "";
+  const key = Object.keys(request.headers || {}).find((header) => header.toLowerCase() === name.toLowerCase());
+  return key ? String(request.headers[key] || "") : "";
+}
+
+async function sha256(value) {
+  const bytes = new TextEncoder().encode(value);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+function normalizePhone(value) {
+  const digits = value.replace(/\D/g, "");
+  if (digits.startsWith("0")) return `84${digits.slice(1)}`;
+  return digits;
+}
+
+function getSafeSourceUrl(value, origin) {
+  try {
+    const url = new URL(value);
+    return ALLOWED_ORIGINS.has(url.origin) ? url.href.slice(0, 500) : `${origin || "https://webinar.teencare.vn"}/`;
+  } catch {
+    return `${origin || "https://webinar.teencare.vn"}/`;
+  }
+}
+
+async function sendMetaLead({ request, session, phone, email, eventId, metaBrowser }) {
+  const pixelId = clean(process.env.META_PIXEL_ID || process.env.VITE_META_PIXEL_ID, 20);
+  const accessToken = String(process.env.META_CAPI_ACCESS_TOKEN || "").trim();
+  if (!/^\d{5,20}$/.test(pixelId) || !accessToken || !eventId) return false;
+
+  const userData = {};
+  const normalizedPhone = normalizePhone(phone);
+  const normalizedEmail = email.trim().toLowerCase();
+  if (normalizedPhone) userData.ph = [await sha256(normalizedPhone)];
+  if (normalizedEmail) userData.em = [await sha256(normalizedEmail)];
+
+  const forwardedFor = getHeader(request, "x-forwarded-for").split(",")[0].trim();
+  const userAgent = getHeader(request, "user-agent").slice(0, 500);
+  const fbp = clean(metaBrowser?.fbp, 250);
+  const fbc = clean(metaBrowser?.fbc, 250);
+  if (forwardedFor) userData.client_ip_address = forwardedFor;
+  if (userAgent) userData.client_user_agent = userAgent;
+  if (fbp) userData.fbp = fbp;
+  if (fbc) userData.fbc = fbc;
+
+  const origin = getHeader(request, "origin");
+  const payload = {
+    data: [{
+      event_name: "Lead",
+      event_time: Math.floor(Date.now() / 1000),
+      event_id: eventId,
+      event_source_url: getSafeSourceUrl(metaBrowser?.sourceUrl, origin),
+      action_source: "website",
+      user_data: userData,
+      custom_data: {
+        content_name: "TeenCare Webinar",
+        content_category: session,
+        currency: "VND",
+        value: 0,
+      },
+    }],
+  };
+
+  const testEventCode = String(process.env.META_TEST_EVENT_CODE || "").trim();
+  if (testEventCode) payload.test_event_code = testEventCode;
+
+  const graphVersion = /^v\d+\.\d+$/.test(process.env.META_GRAPH_API_VERSION || "")
+    ? process.env.META_GRAPH_API_VERSION
+    : "v23.0";
+  const metaResponse = await fetch(`https://graph.facebook.com/${graphVersion}/${pixelId}/events`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+    signal: AbortSignal.timeout(5000),
+  });
+
+  if (!metaResponse.ok) throw new Error(`Meta CAPI rejected the event (${metaResponse.status})`);
+  return true;
+}
+
 function clean(value, maxLength) {
   return String(value ?? "").trim().slice(0, maxLength);
 }
@@ -45,6 +130,11 @@ export default async function handler(request, response) {
   const email = clean(body.email, 160);
   const expectation = clean(body.expectation, 1500);
   const eventId = clean(body.eventId, 100);
+  const metaBrowser = {
+    fbp: clean(body.metaBrowser?.fbp, 250),
+    fbc: clean(body.metaBrowser?.fbc, 250),
+    sourceUrl: clean(body.metaBrowser?.sourceUrl, 500),
+  };
   const attribution = Object.fromEntries(
     ATTRIBUTION_KEYS.map((key) => [key, clean(body.attribution?.[key], 250)]),
   );
@@ -73,6 +163,12 @@ export default async function handler(request, response) {
 
     if (![200, 302, 303].includes(sheetResponse.status)) {
       throw new Error(`Google Sheet rejected the request (${sheetResponse.status})`);
+    }
+
+    try {
+      await sendMetaLead({ request, session, phone, email, eventId, metaBrowser });
+    } catch (error) {
+      console.warn("Meta CAPI delivery failed", error instanceof Error ? error.message : error);
     }
 
     return response.status(200).json({ ok: true });

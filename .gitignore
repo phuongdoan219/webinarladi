@@ -2,3 +2,5 @@ site/node_modules/
 site/dist/
 site/vite.stdout.log
 site/vite.stderr.log
+site/.env.local
+site/.env.*.local

@@ -20,6 +20,7 @@ import {
 import {
   createEventId,
   getAttribution,
+  getMetaBrowserData,
   trackLead,
   trackRegistrationCta,
 } from "./tracking.js";
@@ -235,6 +236,7 @@ export function App() {
         body: JSON.stringify({
           ...Object.fromEntries(formData),
           attribution: getAttribution(),
+          metaBrowser: getMetaBrowserData(),
           eventId,
         }),
       });

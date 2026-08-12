@@ -51,6 +51,28 @@ export function getAttribution() {
   }
 }
 
+function readCookie(name) {
+  const prefix = `${name}=`;
+  const cookie = document.cookie
+    .split(";")
+    .map((part) => part.trim())
+    .find((part) => part.startsWith(prefix));
+  return cookie ? decodeURIComponent(cookie.slice(prefix.length)).slice(0, 250) : "";
+}
+
+export function getMetaBrowserData() {
+  const attribution = getAttribution();
+  const fbp = readCookie("_fbp");
+  const storedFbc = readCookie("_fbc");
+  const fbc = storedFbc || (attribution.fbclid ? `fb.1.${Date.now()}.${attribution.fbclid}` : "");
+
+  return {
+    fbp,
+    fbc,
+    sourceUrl: window.location.href.slice(0, 500),
+  };
+}
+
 function initGoogleTracking() {
   window.dataLayer = window.dataLayer || [];
 
