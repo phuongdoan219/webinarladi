@@ -1,5 +1,5 @@
 const GOOGLE_SHEETS_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbzeAKxlB4RbHMQWoEJFbAAI71bDgVs4vyaKh-zEgMIpvp7oDhWBzlxJa_mrQVus9UY/exec";
+  "https://script.google.com/macros/s/AKfycbzIgh6GqiIxGafiPnyY-XyctL5HsOcMFxDI-C7VQmygOV2NyHuAJMbsU-H7eeG3aAq2_Q/exec";
 
 const SESSION_VALUES = new Set(["thu-5", "chu-nhat", "ca-2"]);
 const ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid"];
