@@ -78,6 +78,9 @@ test("forwards a valid registration to Google Sheets", async () => {
     assert.equal(forwardedBody.get("eventId"), "lead-test-123");
     assert.equal(forwardedBody.get("utm_source"), "facebook");
     assert.equal(forwardedBody.get("utm_campaign"), "webinar-test");
+    assert.equal(forwardedBody.get("utmSource"), "facebook");
+    assert.equal(forwardedBody.get("utmCampaign"), "webinar-test");
+    assert.equal(forwardedBody.get("landingPage"), "https://webinarladi.vercel.app/");
   } finally {
     globalThis.fetch = originalFetch;
   }

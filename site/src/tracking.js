@@ -25,8 +25,23 @@ function loadScript(id, src) {
   document.head.appendChild(script);
 }
 
+function getAttributionParams() {
+  if (window.location.search) return new URLSearchParams(window.location.search);
+
+  const pathQuery = window.location.pathname.replace(/^\/+/, "");
+  const looksLikeTrackingPath = /^(?:utm_(?:source|medium|campaign|content|term)|fbclid|gclid)=/i.test(pathQuery);
+  if (!looksLikeTrackingPath) return new URLSearchParams();
+
+  const params = new URLSearchParams(pathQuery);
+  const canonicalUrl = new URL(window.location.href);
+  canonicalUrl.pathname = "/";
+  canonicalUrl.search = params.toString();
+  window.history.replaceState({}, "", canonicalUrl);
+  return params;
+}
+
 function rememberAttribution() {
-  const params = new URLSearchParams(window.location.search);
+  const params = getAttributionParams();
   const attribution = Object.fromEntries(
     ATTRIBUTION_KEYS.flatMap((key) => {
       const value = params.get(key)?.slice(0, 250);

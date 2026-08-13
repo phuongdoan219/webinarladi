@@ -21,6 +21,8 @@ Nếu có `VITE_GTM_ID`, mã nguồn không tải GA4 trực tiếp để tránh
 
 `generate_lead` có `event_id`, `webinar_session` và thông tin UTM/click ID nếu URL có cung cấp. Không đưa họ tên, số điện thoại hoặc email vào pixel/data layer.
 
+Liên kết quảng cáo chuẩn phải dùng dấu `?`, ví dụ `https://webinar.teencare.vn/?utm_source=FB&utm_medium=CVS`. Mã nguồn cũng tự sửa dạng cũ `/utm_source=...` để các quảng cáo đã tạo không bị mất nguồn. API gửi cả URL landing page và tên trường UTM dạng chuẩn/camelCase để tương thích với Google Apps Script.
+
 ## Cấu hình trong GTM
 
 1. Tạo Google tag với Measurement ID GA4 và trigger `Initialization - All Pages`.

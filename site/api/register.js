@@ -138,6 +138,7 @@ export default async function handler(request, response) {
   const attribution = Object.fromEntries(
     ATTRIBUTION_KEYS.map((key) => [key, clean(body.attribution?.[key], 250)]),
   );
+  const landingPage = getSafeSourceUrl(metaBrowser.sourceUrl, origin);
 
   if (!SESSION_VALUES.has(session) || !parentName || !phone || !expectation) {
     return response.status(400).json({ ok: false, error: "Thiếu thông tin bắt buộc" });
@@ -151,6 +152,12 @@ export default async function handler(request, response) {
       email,
       expectation,
       eventId,
+      landingPage,
+      utmSource: attribution.utm_source,
+      utmMedium: attribution.utm_medium,
+      utmCampaign: attribution.utm_campaign,
+      utmContent: attribution.utm_content,
+      utmTerm: attribution.utm_term,
       ...attribution,
     });
 
