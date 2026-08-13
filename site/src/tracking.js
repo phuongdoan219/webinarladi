@@ -26,13 +26,16 @@ function loadScript(id, src) {
 }
 
 function getAttributionParams() {
-  if (window.location.search) return new URLSearchParams(window.location.search);
-
+  const searchParams = new URLSearchParams(window.location.search);
   const pathQuery = window.location.pathname.replace(/^\/+/, "");
   const looksLikeTrackingPath = /^(?:utm_(?:source|medium|campaign|content|term)|fbclid|gclid)=/i.test(pathQuery);
-  if (!looksLikeTrackingPath) return new URLSearchParams();
+  if (!looksLikeTrackingPath) return searchParams;
 
   const params = new URLSearchParams(pathQuery);
+  searchParams.forEach((value, key) => {
+    params.set(key, value);
+  });
+
   const canonicalUrl = new URL(window.location.href);
   canonicalUrl.pathname = "/";
   canonicalUrl.search = params.toString();
