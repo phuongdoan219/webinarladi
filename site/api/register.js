@@ -35,6 +35,27 @@ function getSafeSourceUrl(value, origin) {
   }
 }
 
+function getAttributionFromUrl(value) {
+  try {
+    const url = new URL(value);
+    const params = new URLSearchParams(url.search);
+    const pathQuery = url.pathname.replace(/^\/+/, "");
+    if (/^(?:utm_(?:source|medium|campaign|content|term)|fbclid|gclid)=/i.test(pathQuery)) {
+      const pathParams = new URLSearchParams(pathQuery);
+      params.forEach((paramValue, key) => pathParams.set(key, paramValue));
+      return Object.fromEntries(
+        ATTRIBUTION_KEYS.map((key) => [key, clean(pathParams.get(key), 250)]),
+      );
+    }
+
+    return Object.fromEntries(
+      ATTRIBUTION_KEYS.map((key) => [key, clean(params.get(key), 250)]),
+    );
+  } catch {
+    return Object.fromEntries(ATTRIBUTION_KEYS.map((key) => [key, ""]));
+  }
+}
+
 async function sendMetaLead({ request, session, phone, email, eventId, metaBrowser }) {
   const pixelId = clean(process.env.META_PIXEL_ID || process.env.VITE_META_PIXEL_ID, 20);
   const accessToken = String(process.env.META_CAPI_ACCESS_TOKEN || "").trim();
@@ -135,10 +156,14 @@ export default async function handler(request, response) {
     fbc: clean(body.metaBrowser?.fbc, 250),
     sourceUrl: clean(body.metaBrowser?.sourceUrl, 500),
   };
-  const attribution = Object.fromEntries(
-    ATTRIBUTION_KEYS.map((key) => [key, clean(body.attribution?.[key], 250)]),
-  );
   const landingPage = getSafeSourceUrl(metaBrowser.sourceUrl, origin);
+  const urlAttribution = getAttributionFromUrl(landingPage);
+  const attribution = Object.fromEntries(
+    ATTRIBUTION_KEYS.map((key) => [
+      key,
+      clean(body.attribution?.[key], 250) || urlAttribution[key],
+    ]),
+  );
 
   if (!SESSION_VALUES.has(session) || !parentName || !phone || !expectation) {
     return response.status(400).json({ ok: false, error: "Thiếu thông tin bắt buộc" });

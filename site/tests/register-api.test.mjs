@@ -150,6 +150,45 @@ test("sends a deduplicated Lead event to Meta CAPI without exposing raw contact 
   }
 });
 
+test("recovers missing UTM fields from the landing page URL", async () => {
+  const originalFetch = globalThis.fetch;
+  let forwardedBody;
+  globalThis.fetch = async (_url, options) => {
+    forwardedBody = options.body;
+    return { status: 302 };
+  };
+
+  try {
+    const response = createResponse();
+    await register(
+      {
+        method: "POST",
+        headers: { origin: "https://webinar.teencare.vn" },
+        body: {
+          session: "chu-nhat",
+          parentName: "UTM fallback test",
+          phone: "0900000000",
+          expectation: "Verify attribution fallback",
+          attribution: {},
+          metaBrowser: {
+            sourceUrl: "https://webinar.teencare.vn/?utm_source=FB&utm_medium=CVS&utm_campaign=webinar&utm_term=Phuong&utm_content=TC91&fbclid=test-click-id",
+          },
+        },
+      },
+      response,
+    );
+
+    assert.equal(response.statusCode, 200);
+    assert.equal(forwardedBody.get("utm_source"), "FB");
+    assert.equal(forwardedBody.get("utm_medium"), "CVS");
+    assert.equal(forwardedBody.get("utm_campaign"), "webinar");
+    assert.equal(forwardedBody.get("utm_term"), "Phuong");
+    assert.equal(forwardedBody.get("utm_content"), "TC91");
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test("rejects an incomplete registration", async () => {
   const response = createResponse();
   await register(

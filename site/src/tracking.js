@@ -62,11 +62,22 @@ function rememberAttribution() {
 }
 
 export function getAttribution() {
+  let storedAttribution = {};
   try {
-    return JSON.parse(sessionStorage.getItem("teencare_attribution") || "{}") || {};
+    storedAttribution = JSON.parse(sessionStorage.getItem("teencare_attribution") || "{}") || {};
   } catch {
-    return {};
+    // The current URL remains the fallback when browser storage is unavailable.
   }
+
+  const liveParams = getAttributionParams();
+  const liveAttribution = Object.fromEntries(
+    ATTRIBUTION_KEYS.flatMap((key) => {
+      const value = liveParams.get(key)?.slice(0, 250);
+      return value ? [[key, value]] : [];
+    }),
+  );
+
+  return { ...storedAttribution, ...liveAttribution };
 }
 
 function readCookie(name) {
