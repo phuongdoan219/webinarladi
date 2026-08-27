@@ -51,7 +51,7 @@ export function ThankYouPage() {
           <div>
             <FaClock aria-hidden="true" />
             <span>Thời gian</span>
-            <strong>20:00 - 21:00</strong>
+            <strong>20:00 - 21:30</strong>
           </div>
           <div>
             <FaLaptop aria-hidden="true" />

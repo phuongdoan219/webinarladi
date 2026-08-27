@@ -15,5 +15,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Keep the page visually bright: use near-white ivory as the dominant surface and reserve cream/gold for subtle edge glows and accents. Avoid full-section yellow casts or heavy warm overlays.
 - Motion should feel calm and premium, remain secondary to readability/conversion, and respect `prefers-reduced-motion`.
 - Keep all primary registration CTAs on the same orange gradient treatment. Use a compact sticky bottom registration CTA during scrolling so conversion remains accessible without covering substantial content.
-- The webinar offers two weekly session choices: Thursday this week or Sunday this week, both from 20:00 to 21:00 on Google Meet. Show this schedule consistently in the hero and registration form.
+- The webinar has one fixed weekly session: Thursday from 20:00 to 21:30 on Google Meet. Do not ask registrants to choose a session; submit `thu-5` internally so registration, attribution, and Lead tracking remain compatible.
 - Keep the three “Ba mẹ có đang...?” carousel photos as separate image assets so LadiPage exports do not depend on CSS sprite cropping.

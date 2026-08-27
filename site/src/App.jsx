@@ -32,8 +32,8 @@ const eventDetails = [
 ];
 
 const compactEventDetails = [
-  { icon: FaCalendarDays, value: "Thứ 5 hoặc Chủ Nhật (Linh hoạt lựa chọn)" },
-  { icon: FaClock, value: "20:00 - 21:00" },
+  { icon: FaCalendarDays, value: "Thứ 5" },
+  { icon: FaClock, value: "20:00 - 21:30" },
   { icon: FaLaptop, value: "Google Meet" },
 ];
 
@@ -87,6 +87,21 @@ const outcomes = [
     icon: FaChartLine,
     title: "TIẾN BỘ NHỎ, THAY ĐỔI LỚN",
     body: "Ghi nhận đúng lúc để nuôi động lực và hình thành thói quen bền vững.",
+  },
+];
+
+const specialFeatures = [
+  {
+    icon: FaHeart,
+    title: "Bí quyết hiểu con tuổi dậy thì",
+  },
+  {
+    icon: FaChartLine,
+    title: "Khám phá cách AI xây dựng bản đồ hành vi của con",
+  },
+  {
+    icon: FaUserGroup,
+    title: "Chuyên gia tư vấn 1:1 cho vấn đề của gia đình",
   },
 ];
 
@@ -228,13 +243,14 @@ export function App() {
 
     try {
       const formData = new FormData(form);
-      const selectedSession = formData.get("session");
+      const selectedSession = "thu-5";
       const eventId = createEventId();
       const response = await fetch(registrationEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...Object.fromEntries(formData),
+          session: selectedSession,
           attribution: getAttribution(),
           metaBrowser: getMetaBrowserData(),
           eventId,
@@ -396,6 +412,24 @@ export function App() {
         </aside>
       </section>
 
+      <section className="content-section special-features-section reveal-on-scroll" aria-labelledby="special-features-title">
+        <div className="section-heading">
+          <h2 id="special-features-title">CÓ GÌ ĐẶC BIỆT TRONG HỘI THẢO?</h2>
+          <div className="heading-rule" aria-hidden="true"></div>
+        </div>
+
+        <div className="special-features-list">
+          {specialFeatures.map(({ icon: Icon, title }, index) => (
+            <article className="special-feature-card" key={title}>
+              <span className="special-feature-number" aria-hidden="true">0{index + 1}</span>
+              <span className="special-feature-icon"><Icon aria-hidden="true" /></span>
+              <h3>{title}</h3>
+              <FaCircleCheck className="special-feature-check" aria-hidden="true" />
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="content-section outcomes-section reveal-on-scroll" aria-labelledby="outcomes-title">
         <div className="section-heading">
           <h2 id="outcomes-title">SAU HỘI THẢO, BA MẸ NẮM ĐƯỢC GÌ?</h2>
@@ -527,24 +561,6 @@ export function App() {
           </div>
         ) : (
           <form className="registration-form" onSubmit={submitForm}>
-            <fieldset className="session-choice">
-              <legend>Ba mẹ muốn tham gia buổi nào? <b>*</b></legend>
-              <div className="session-choice__options">
-                <label>
-                  <input type="radio" name="session" value="thu-5" required />
-                  <span>Thứ 5</span>
-                </label>
-                <label>
-                  <input type="radio" name="session" value="chu-nhat" required />
-                  <span>Chủ nhật</span>
-                </label>
-                <label>
-                  <input type="radio" name="session" value="ca-2" required />
-                  <span>Cả 2 buổi</span>
-                </label>
-              </div>
-              <p>Hai buổi đều diễn ra từ 20:00 - 21:00 trên Google Meet.</p>
-            </fieldset>
             <label>
               <span>Họ và tên phụ huynh <b>*</b></span>
               <span className="input-wrap"><FaUserGroup /><input name="parentName" required placeholder="Nhập họ và tên của ba/mẹ" /></span>
