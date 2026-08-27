@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { FaArrowRight, FaCircleCheck } from "react-icons/fa6";
+import { FaCircleCheck } from "react-icons/fa6";
+import { SiZalo } from "react-icons/si";
 
 export function ThankYouPage() {
   useEffect(() => {
@@ -22,14 +23,9 @@ export function ThankYouPage() {
           <FaCircleCheck />
         </div>
 
-        <p className="thank-you-community__kicker">TEENCARE ĐÃ NHẬN ĐĂNG KÝ CỦA BA MẸ</p>
         <h1 id="thank-you-title">Đăng ký thành công!</h1>
-        <p className="thank-you-community__lead">
-          Một bước nhỏ hôm nay, thêm thật nhiều cơ hội để thấu hiểu và đồng hành cùng con.
-        </p>
 
         <div className="thank-you-community__invite">
-          <strong>Đừng bỏ lỡ bước cuối cùng</strong>
           <p>
           Ba mẹ hãy tham gia cộng đồng TeenCare Webinar để nhận thông tin mới nhất và những tài liệu nuôi dạy con độc quyền
           </p>
@@ -45,8 +41,8 @@ export function ThankYouPage() {
           target="_blank"
           rel="noreferrer"
         >
-          <span>VÀO NHÓM ZALO NGAY</span>
-          <FaArrowRight aria-hidden="true" />
+          <SiZalo aria-hidden="true" />
+          <span>Tham gia cộng đồng TeenCare Webinar</span>
         </a>
 
         <p className="thank-you-community__closing">Hẹn gặp ba mẹ trong cộng đồng TeenCare Webinar <span aria-hidden="true">♥</span></p>
