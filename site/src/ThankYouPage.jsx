@@ -26,7 +26,7 @@ export function ThankYouPage() {
 
         <div className="thank-you-community__invite">
           <p>
-          Ba mẹ hãy tham gia cộng đồng TeenCare Webinar để nhận thông tin mới nhất và những tài liệu nuôi dạy con độc quyền
+          Ba mẹ hãy tham gia cộng đồng TeenCare Webinar để nhận thông tin mới nhất và những tài liệu nuôi dạy con độc quyền nhé.
           </p>
 
           <div className="thank-you-benefits" aria-label="Quyền lợi khi tham gia cộng đồng">
