@@ -1843,9 +1843,14 @@ body {
   animation: button-shine 3.8s ease-in-out infinite;
 }
 
-.thank-you-community a svg {
+.thank-you-community a > img {
+  width: 38px;
+  height: 38px;
   flex: 0 0 auto;
-  font-size: 28px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 6px 14px rgba(17, 87, 203, 0.24);
 }
 
 .thank-you-community a:hover,
@@ -2188,7 +2193,6 @@ body {
   .thank-you-success-mark,
   .thank-you-success-ring,
   .thank-you-community a::after,
-  .thank-you-community a svg,
   .cta-button::after,
   .secondary-cta::after,
   .submit-button::after,

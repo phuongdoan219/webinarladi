@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { FaCircleCheck } from "react-icons/fa6";
-import { SiZalo } from "react-icons/si";
 
 export function ThankYouPage() {
   useEffect(() => {
@@ -41,8 +40,8 @@ export function ThankYouPage() {
           target="_blank"
           rel="noreferrer"
         >
-          <SiZalo aria-hidden="true" />
-          <span>Tham gia cộng đồng TeenCare Webinar</span>
+          <img src="/assets/zalo-app-icon.jpg" width="512" height="512" alt="" aria-hidden="true" />
+          <span>Tham Gia Ngay!</span>
         </a>
 
         <p className="thank-you-community__closing">Hẹn gặp ba mẹ trong cộng đồng TeenCare Webinar <span aria-hidden="true">♥</span></p>
