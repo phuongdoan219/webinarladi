@@ -185,6 +185,24 @@ export function App() {
   const [carouselHeight, setCarouselHeight] = useState(null);
 
   useEffect(() => {
+    const controller = new AbortController();
+    const warmupTimer = window.setTimeout(() => {
+      fetch(registrationEndpoint, {
+        method: "GET",
+        cache: "no-store",
+        signal: controller.signal,
+      }).catch(() => {
+        // Warm-up is best-effort and must never interrupt the landing page.
+      });
+    }, 700);
+
+    return () => {
+      window.clearTimeout(warmupTimer);
+      controller.abort();
+    };
+  }, []);
+
+  useEffect(() => {
     function updateProblemHeight() {
       const activeSlide = problemSlideRefs.current[activeProblem];
       if (activeSlide) setProblemCarouselHeight(activeSlide.offsetHeight);
@@ -264,9 +282,7 @@ export function App() {
 
       trackLead({ session: selectedSession, eventId });
       form.reset();
-      window.setTimeout(() => {
-        window.location.assign(`/cam-on?session=${encodeURIComponent(selectedSession)}`);
-      }, 180);
+      window.location.assign(`/cam-on?session=${encodeURIComponent(selectedSession)}`);
     } catch {
       setSubmitError("Chưa thể gửi đăng ký. Ba mẹ vui lòng kiểm tra kết nối mạng và thử lại.");
     } finally {
@@ -580,7 +596,7 @@ export function App() {
               <textarea name="expectation" required placeholder="Ví dụ: Tôi muốn hiểu vì sao con ngày càng ít chia sẻ và biết cách trò chuyện để con sẵn sàng mở lòng hơn." />
             </label>
             <button className="submit-button" type="submit" disabled={submitting}>
-              {submitting ? "ĐANG GỬI ĐĂNG KÝ..." : <>XÁC NHẬN THAM GIA <FaArrowRight /></>}
+              {submitting ? <><span className="submit-spinner" aria-hidden="true" /> ĐANG XÁC NHẬN...</> : <>XÁC NHẬN THAM GIA <FaArrowRight /></>}
             </button>
             {submitError && <p className="form-error" role="alert">{submitError}</p>}
             <p className="consent-note"><FaLock /> Bằng việc đăng ký, ba mẹ đồng ý để TeenCare liên hệ và gửi thông tin liên quan đến hội thảo.</p>

@@ -1062,6 +1062,20 @@ p {
   transform: none;
 }
 
+.submit-spinner {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  border: 2px solid rgba(255, 255, 255, 0.42);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: submit-spin 700ms linear infinite;
+}
+
+@keyframes submit-spin {
+  to { transform: rotate(360deg); }
+}
+
 .form-error {
   margin: 2px 0 0;
   color: #b42318;
@@ -2185,6 +2199,7 @@ body {
   .thank-you-success-mark,
   .thank-you-success-ring,
   .thank-you-community a::after,
+  .submit-spinner,
   .cta-button::after,
   .secondary-cta::after,
   .submit-button::after,

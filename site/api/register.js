@@ -1,3 +1,5 @@
+import { waitUntil } from "@vercel/functions";
+
 const GOOGLE_SHEETS_ENDPOINT =
   "https://script.google.com/macros/s/AKfycbzIgh6GqiIxGafiPnyY-XyctL5HsOcMFxDI-C7VQmygOV2NyHuAJMbsU-H7eeG3aAq2_Q/exec";
 
@@ -114,6 +116,21 @@ async function sendMetaLead({ request, session, phone, email, eventId, metaBrows
   return true;
 }
 
+async function scheduleMetaLead(payload) {
+  const task = sendMetaLead(payload).catch((error) => {
+    console.warn("Meta CAPI delivery failed", error instanceof Error ? error.message : error);
+  });
+
+  if (process.env.VERCEL === "1") {
+    waitUntil(task);
+    return;
+  }
+
+  // Local development and unit tests do not provide Vercel's request context.
+  // Await there so behavior stays deterministic; production runs it in the background.
+  await task;
+}
+
 function clean(value, maxLength) {
   return String(value ?? "").trim().slice(0, maxLength);
 }
@@ -197,11 +214,7 @@ export default async function handler(request, response) {
       throw new Error(`Google Sheet rejected the request (${sheetResponse.status})`);
     }
 
-    try {
-      await sendMetaLead({ request, session, phone, email, eventId, metaBrowser });
-    } catch (error) {
-      console.warn("Meta CAPI delivery failed", error instanceof Error ? error.message : error);
-    }
+    await scheduleMetaLead({ request, session, phone, email, eventId, metaBrowser });
 
     return response.status(200).json({ ok: true });
   } catch (error) {
