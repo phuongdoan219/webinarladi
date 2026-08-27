@@ -17,3 +17,4 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Keep all primary registration CTAs on the same orange gradient treatment. Use a compact sticky bottom registration CTA during scrolling so conversion remains accessible without covering substantial content.
 - The webinar has one fixed weekly session: Thursday from 20:00 to 21:30 on Google Meet. Do not ask registrants to choose a session; submit `thu-5` internally so registration, attribution, and Lead tracking remain compatible.
 - Keep the three “Ba mẹ có đang...?” carousel photos as separate image assets so LadiPage exports do not depend on CSS sprite cropping.
+- Keep adjacent content sections visually distinct: “Có gì đặc biệt trong hội thảo?” uses large numbered editorial cards with topic labels and no icons, while “Sau hội thảo…” retains its circular outcome icons.

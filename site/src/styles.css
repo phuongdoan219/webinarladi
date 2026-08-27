@@ -429,44 +429,52 @@ p {
 .special-feature-card {
   position: relative;
   display: grid;
-  grid-template-columns: 52px 1fr 22px;
+  grid-template-columns: 72px 1fr 7px;
   align-items: center;
-  gap: 12px;
-  min-height: 90px;
+  gap: 14px;
+  min-height: 104px;
   overflow: hidden;
-  padding: 16px 14px;
-  border: 1px solid rgba(232, 179, 85, 0.5);
-  border-radius: 17px;
-  background: linear-gradient(145deg, #ffffff, rgba(255, 253, 249, 0.96));
-  box-shadow: 0 14px 32px rgba(83, 50, 6, 0.09);
+  padding: 15px 13px 15px 0;
+  border: 1px solid rgba(226, 171, 72, 0.48);
+  border-radius: 4px 20px 20px 4px;
+  background:
+    linear-gradient(90deg, rgba(255, 244, 219, 0.95) 0 72px, transparent 72px),
+    linear-gradient(145deg, #ffffff, rgba(255, 253, 249, 0.97));
+  box-shadow: 0 14px 32px rgba(83, 50, 6, 0.08);
 }
 
 .special-feature-number {
-  position: absolute;
-  top: -9px;
-  right: 10px;
-  color: rgba(239, 145, 0, 0.08);
-  font-size: 54px;
+  display: grid;
+  align-self: stretch;
+  place-items: center;
+  border-right: 1px solid rgba(231, 164, 45, 0.32);
+  color: #e97900;
+  font-size: 30px;
   font-weight: 900;
   line-height: 1;
+  letter-spacing: -1.5px;
 }
 
-.special-feature-icon {
+.special-feature-copy {
+  position: relative;
+  z-index: 1;
   display: grid;
-  width: 52px;
-  height: 52px;
-  place-items: center;
-  border: 1px solid #f3c16f;
-  border-radius: 16px;
-  color: #f18b00;
-  background: linear-gradient(145deg, #fffdf8, #fff0cf);
-  box-shadow: 0 9px 20px rgba(221, 131, 0, 0.13);
-  font-size: 23px;
+  gap: 6px;
+}
+
+.special-feature-kicker {
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: #a94e00;
+  background: #fff0cd;
+  font-size: 9px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 1.2px;
 }
 
 .special-feature-card h3 {
-  position: relative;
-  z-index: 1;
   margin: 0;
   color: #082b5d;
   font-size: 15px;
@@ -474,11 +482,12 @@ p {
   line-height: 1.42;
 }
 
-.special-feature-check {
-  position: relative;
-  z-index: 1;
-  color: #f18b00;
-  font-size: 20px;
+.special-feature-accent {
+  width: 7px;
+  height: 54px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffc338, #ed7500);
+  box-shadow: 0 6px 16px rgba(237, 117, 0, 0.3);
 }
 
 .story-card,

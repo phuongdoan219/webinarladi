@@ -92,15 +92,15 @@ const outcomes = [
 
 const specialFeatures = [
   {
-    icon: FaHeart,
+    kicker: "THẤU HIỂU",
     title: "Bí quyết hiểu con tuổi dậy thì",
   },
   {
-    icon: FaChartLine,
+    kicker: "CÔNG NGHỆ AI",
     title: "Khám phá cách AI xây dựng bản đồ hành vi của con",
   },
   {
-    icon: FaUserGroup,
+    kicker: "TƯ VẤN RIÊNG",
     title: "Chuyên gia tư vấn 1:1 cho vấn đề của gia đình",
   },
 ];
@@ -419,12 +419,14 @@ export function App() {
         </div>
 
         <div className="special-features-list">
-          {specialFeatures.map(({ icon: Icon, title }, index) => (
+          {specialFeatures.map(({ kicker, title }, index) => (
             <article className="special-feature-card" key={title}>
               <span className="special-feature-number" aria-hidden="true">0{index + 1}</span>
-              <span className="special-feature-icon"><Icon aria-hidden="true" /></span>
-              <h3>{title}</h3>
-              <FaCircleCheck className="special-feature-check" aria-hidden="true" />
+              <div className="special-feature-copy">
+                <span className="special-feature-kicker">{kicker}</span>
+                <h3>{title}</h3>
+              </div>
+              <span className="special-feature-accent" aria-hidden="true"></span>
             </article>
           ))}
         </div>
