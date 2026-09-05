@@ -39,9 +39,8 @@ const compactEventDetails = [
 function CompactEventInfo({ className = "" }) {
   return (
     <div className={`compact-event-info ${className}`.trim()} aria-label="Thông tin hội thảo">
-      {compactEventDetails.map(({ icon: Icon, value }, index) => (
+      {compactEventDetails.map(({ icon: Icon, value }) => (
         <div className="compact-event-item" key={value}>
-          {index > 0 && <span className="compact-event-separator" aria-hidden="true" />}
           <Icon aria-hidden="true" />
           <strong>{value}</strong>
         </div>
