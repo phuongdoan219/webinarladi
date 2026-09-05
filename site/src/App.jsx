@@ -32,7 +32,6 @@ const eventDetails = [
 ];
 
 const compactEventDetails = [
-  { icon: FaCalendarDays, value: "Thứ 5 Tuần Này" },
   { icon: FaClock, value: "20:00 - 21:30" },
   { icon: FaLaptop, value: "Google Meet" },
 ];
