@@ -36,7 +36,7 @@ export function ThankYouPage() {
         </div>
 
         <a
-          href="https://zalo.me/g/71inod1r7w2wrblvtiy5"
+          href="https://zalo.me/g/xixmfmqkpx8exo18aegh"
           target="_blank"
           rel="noreferrer"
         >
