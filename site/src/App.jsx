@@ -14,7 +14,6 @@ import {
   FaLaptop,
   FaLock,
   FaPhone,
-  FaSeedling,
   FaUserGroup,
 } from "react-icons/fa6";
 import {
@@ -32,7 +31,7 @@ const eventDetails = [
 ];
 
 const compactEventDetails = [
-  { icon: FaClock, value: "20:00 - 21:30" },
+  { icon: FaClock, value: "19:30 - 21:00" },
   { icon: FaLaptop, value: "Google Meet" },
 ];
 
@@ -77,14 +76,14 @@ const outcomes = [
     body: "Hiểu động lực, nỗi sợ và niềm tin để chọn cách nói con sẵn sàng đón nhận.",
   },
   {
-    icon: FaSeedling,
-    title: "NHÌN CÂY, HIỂU ĐẤT",
-    body: "Nhìn qua hành vi bề mặt để nhận ra gốc rễ con đang cần bồi đắp.",
-  },
-  {
     icon: FaChartLine,
     title: "TIẾN BỘ NHỎ, THAY ĐỔI LỚN",
     body: "Ghi nhận đúng lúc để nuôi động lực và hình thành thói quen bền vững.",
+  },
+  {
+    icon: FaUserGroup,
+    title: "THÁO GỠ RIÊNG, HIỂU NHAU HƠN",
+    body: "Ba mẹ và con cùng nhìn lại vấn đề riêng, thấu hiểu nhau hơn và nhận định hướng phù hợp từ chuyên gia.",
   },
 ];
 
@@ -96,10 +95,6 @@ const specialFeatures = [
   {
     kicker: "CÔNG NGHỆ AI",
     title: "Khám phá cách AI xây dựng bản đồ hành vi của con",
-  },
-  {
-    kicker: "TƯ VẤN RIÊNG",
-    title: "Chuyên gia tư vấn 1:1 cho vấn đề của gia đình",
   },
 ];
 
@@ -446,9 +441,30 @@ export function App() {
         </div>
       </section>
 
+      <section className="content-section private-consultation-section reveal-on-scroll" aria-labelledby="private-consultation-title">
+        <div className="private-consultation-glow" aria-hidden="true"></div>
+
+        <div className="private-consultation-header">
+          <span className="private-consultation-badge">NỘI DUNG ĐẶC BIỆT TRONG WEBINAR</span>
+          <h2 id="private-consultation-title">TƯ VẤN 1:1 DÀNH CHO BA MẸ VÀ CON</h2>
+        </div>
+
+        <div className="private-consultation-card">
+          <ul className="private-consultation-benefits">
+            <li><FaCircleCheck aria-hidden="true" /><span>Chia sẻ vấn đề riêng của gia đình trong không gian gần gũi.</span></li>
+            <li><FaCircleCheck aria-hidden="true" /><span>Cùng nhìn lại điều đang diễn ra để ba mẹ và con hiểu nhau hơn.</span></li>
+            <li><FaCircleCheck aria-hidden="true" /><span>Nhận định hướng phù hợp trực tiếp từ chuyên gia TeenCare.</span></li>
+          </ul>
+
+          <button className="cta-button private-consultation-cta" type="button" onClick={() => goToForm("private_consultation") }>
+            <span>ĐĂNG KÝ NGAY</span><FaArrowRight aria-hidden="true" />
+          </button>
+        </div>
+      </section>
+
       <section className="content-section outcomes-section reveal-on-scroll" aria-labelledby="outcomes-title">
         <div className="section-heading">
-          <h2 id="outcomes-title">SAU HỘI THẢO, BA MẸ NẮM ĐƯỢC GÌ?</h2>
+          <h2 id="outcomes-title">SAU HỘI THẢO, BA MẸ NHẬN ĐƯỢC GÌ?</h2>
           <div className="heading-rule" aria-hidden="true"></div>
         </div>
 
