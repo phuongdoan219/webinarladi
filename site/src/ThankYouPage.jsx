@@ -23,28 +23,13 @@ export function ThankYouPage() {
         </div>
 
         <h1 id="thank-you-title">Đăng ký thành công!</h1>
+        <p className="thank-you-community__lead">
+          Cảm ơn ba mẹ đã đăng ký tham gia hội thảo cùng TeenCare.
+        </p>
 
-        <div className="thank-you-community__invite">
-          <p>
-          Ba mẹ hãy tham gia cộng đồng TeenCare Webinar để nhận thông tin mới nhất và những tài liệu nuôi dạy con độc quyền nhé.
-          </p>
-
-          <div className="thank-you-benefits" aria-label="Quyền lợi khi tham gia cộng đồng">
-            <span><FaCircleCheck aria-hidden="true" /> Thông báo mới nhất</span>
-            <span><FaCircleCheck aria-hidden="true" /> Tài liệu độc quyền</span>
-          </div>
-        </div>
-
-        <a
-          href="https://zalo.me/g/lnhpfaau6if8sllcdyom"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img src="/assets/zalo-app-icon.jpg" width="512" height="512" alt="" aria-hidden="true" />
-          <span>Tham Gia Ngay!</span>
+        <a href="/">
+          <span>Trở về trang chủ</span>
         </a>
-
-        <p className="thank-you-community__closing">Hẹn gặp ba mẹ trong cộng đồng TeenCare Webinar <span aria-hidden="true">♥</span></p>
       </section>
     </main>
   );
