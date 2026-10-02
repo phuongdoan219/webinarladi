@@ -20,7 +20,7 @@ import {
   createEventId,
   getAttribution,
   getMetaBrowserData,
-  trackLead,
+  trackCompleteRegistration,
   trackRegistrationCta,
 } from "./tracking.js";
 
@@ -273,7 +273,7 @@ export function App() {
         throw new Error(result.error || "Không thể lưu đăng ký");
       }
 
-      trackLead({ session: selectedSession, eventId });
+      trackCompleteRegistration({ session: selectedSession, eventId });
       form.reset();
       window.location.assign(`/cam-on?session=${encodeURIComponent(selectedSession)}`);
     } catch {

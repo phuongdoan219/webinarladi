@@ -17,7 +17,7 @@ Nếu có `VITE_GTM_ID`, mã nguồn không tải GA4 trực tiếp để tránh
 | Data Layer event | Ý nghĩa | Meta event |
 | --- | --- | --- |
 | `registration_cta_click` | Người dùng nhấn CTA đăng ký | `RegistrationCtaClick` (custom) |
-| `generate_lead` | API đã lưu đăng ký thành công | `Lead` |
+| `generate_lead` | API đã lưu đăng ký thành công | `CompleteRegistration` |
 
 `generate_lead` có `event_id`, `webinar_session` và thông tin UTM/click ID nếu URL có cung cấp. Không đưa họ tên, số điện thoại hoặc email vào pixel/data layer.
 
@@ -31,6 +31,8 @@ Liên kết quảng cáo chuẩn phải dùng dấu `?`, ví dụ `https://webin
 4. Tạo Data Layer Variable cho `cta_source`, `webinar_session`, `event_id` và các trường `utm_*` cần báo cáo.
 5. Dùng Tag Assistant Preview để xác nhận mỗi sự kiện chỉ chạy một lần, sau đó publish container.
 
-Meta Pixel được mã nguồn tải trực tiếp. Dùng Meta Pixel Helper và Events Manager Test Events để xác nhận `PageView`, `RegistrationCtaClick` và `Lead`.
+Meta Pixel được mã nguồn tải trực tiếp. Dùng Meta Pixel Helper và Events Manager Test Events để xác nhận `PageView`, `RegistrationCtaClick` và `CompleteRegistration`.
 
-Sự kiện `Lead` phía trình duyệt và máy chủ dùng chung `event_id` để Meta loại bỏ bản ghi trùng. Email và số điện thoại được chuẩn hóa, băm SHA-256 ở API trước khi gửi; token không bao giờ được đưa xuống trình duyệt. Sau khi kiểm tra xong, xóa `META_TEST_EVENT_CODE` để chuyển sang dữ liệu production.
+Sự kiện `CompleteRegistration` phía trình duyệt và máy chủ dùng chung `event_id` để Meta loại bỏ bản ghi trùng. Chỉ gửi sau khi API xác nhận lưu đăng ký thành công; mở hoặc tải lại trang cảm ơn không gửi sự kiện này. GA4/GTM vẫn dùng `generate_lead`. Email và số điện thoại được chuẩn hóa, băm SHA-256 ở API trước khi gửi; token không bao giờ được đưa xuống trình duyệt. Sau khi kiểm tra xong, xóa `META_TEST_EVENT_CODE` để chuyển sang dữ liệu production.
+
+Sau khi triển khai, chọn `CompleteRegistration` (Hoàn tất đăng ký) làm sự kiện chuyển đổi trong nhóm quảng cáo Meta đang dùng landing page này. Nếu có tag Meta hoặc quy tắc tự động gửi `Lead` trong GTM/Events Manager, kiểm tra và cập nhật riêng để báo cáo đúng sự kiện mới.

@@ -165,7 +165,7 @@ export function trackRegistrationCta(source) {
   window.fbq?.("trackCustom", "RegistrationCtaClick", { cta_source: source });
 }
 
-export function trackLead({ session, eventId }) {
+export function trackCompleteRegistration({ session, eventId }) {
   const payload = {
     event: "generate_lead",
     event_id: eventId,
@@ -179,7 +179,7 @@ export function trackLead({ session, eventId }) {
   else if (VALID_GA4_ID) window.gtag?.("event", "generate_lead", payload);
   window.fbq?.(
     "track",
-    "Lead",
+    "CompleteRegistration",
     { content_name: "TeenCare Webinar", content_category: session, currency: "VND", value: 0 },
     { eventID: eventId },
   );

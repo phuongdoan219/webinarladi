@@ -10,6 +10,8 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 
 ## Durable design direction
 
+- Meta registration conversions use `CompleteRegistration` in both browser Pixel and server CAPI, sharing the event ID and firing only after the registration API confirms success. Keep GA4/GTM `generate_lead` unchanged.
+
 - Preserve the approved Vietnamese content, imagery, section order, and compact mobile-first layout unless the user explicitly requests content changes.
 - Favor a modern TeenCare visual treatment inspired by the reference landing page: warm cream/orange/gold gradients, soft navy contrast, layered glow, glass-like cards, and restrained ambient motion.
 - Keep the page visually bright: use near-white ivory as the dominant surface and reserve cream/gold for subtle edge glows and accents. Avoid full-section yellow casts or heavy warm overlays.

@@ -86,7 +86,7 @@ test("forwards a valid registration to Google Sheets", async () => {
   }
 });
 
-test("sends a deduplicated Lead event to Meta CAPI without exposing raw contact data", async () => {
+test("sends a deduplicated CompleteRegistration event to Meta CAPI without exposing raw contact data", async () => {
   const originalFetch = globalThis.fetch;
   const originalPixelId = process.env.META_PIXEL_ID;
   const originalToken = process.env.META_CAPI_ACCESS_TOKEN;
@@ -134,7 +134,7 @@ test("sends a deduplicated Lead event to Meta CAPI without exposing raw contact 
     const [lead] = payload.data;
     assert.equal(response.statusCode, 200);
     assert.equal(metaRequest.options.headers.Authorization, "Bearer test-secret-token");
-    assert.equal(lead.event_name, "Lead");
+    assert.equal(lead.event_name, "CompleteRegistration");
     assert.equal(lead.event_id, "lead-dedup-123");
     assert.equal(lead.action_source, "website");
     assert.equal(lead.user_data.client_ip_address, "203.0.113.10");
@@ -202,4 +202,33 @@ test("rejects an incomplete registration", async () => {
 
   assert.equal(response.statusCode, 400);
   assert.equal(response.payload.ok, false);
+});
+
+test("does not send a Meta conversion when saving the registration fails", async () => {
+  const originalFetch = globalThis.fetch;
+  const originalWarn = console.error;
+  const requestedUrls = [];
+  globalThis.fetch = async (url) => {
+    requestedUrls.push(String(url));
+    return { status: 500 };
+  };
+  console.error = () => {};
+  try {
+    const response = createResponse();
+    await register({
+      method: "POST",
+      headers: { origin: "https://webinar.teencare.vn" },
+      body: {
+        session: "thu-5", parentName: "Test Parent", phone: "0900000000",
+        expectation: "Understand the webinar", eventId: "failed-registration-123",
+      },
+    }, response);
+    assert.equal(response.statusCode, 502);
+    assert.equal(response.payload.ok, false);
+    assert.equal(requestedUrls.length, 1);
+    assert.equal(requestedUrls.some((url) => url.includes("graph.facebook.com")), false);
+  } finally {
+    globalThis.fetch = originalFetch;
+    console.error = originalWarn;
+  }
 });

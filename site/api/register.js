@@ -58,7 +58,7 @@ function getAttributionFromUrl(value) {
   }
 }
 
-async function sendMetaLead({ request, session, phone, email, eventId, metaBrowser }) {
+async function sendMetaCompleteRegistration({ request, session, phone, email, eventId, metaBrowser }) {
   const pixelId = clean(process.env.META_PIXEL_ID || process.env.VITE_META_PIXEL_ID, 20);
   const accessToken = String(process.env.META_CAPI_ACCESS_TOKEN || "").trim();
   if (!/^\d{5,20}$/.test(pixelId) || !accessToken || !eventId) return false;
@@ -81,7 +81,7 @@ async function sendMetaLead({ request, session, phone, email, eventId, metaBrows
   const origin = getHeader(request, "origin");
   const payload = {
     data: [{
-      event_name: "Lead",
+      event_name: "CompleteRegistration",
       event_time: Math.floor(Date.now() / 1000),
       event_id: eventId,
       event_source_url: getSafeSourceUrl(metaBrowser?.sourceUrl, origin),
@@ -116,8 +116,8 @@ async function sendMetaLead({ request, session, phone, email, eventId, metaBrows
   return true;
 }
 
-async function scheduleMetaLead(payload) {
-  const task = sendMetaLead(payload).catch((error) => {
+async function scheduleMetaCompleteRegistration(payload) {
+  const task = sendMetaCompleteRegistration(payload).catch((error) => {
     console.warn("Meta CAPI delivery failed", error instanceof Error ? error.message : error);
   });
 
@@ -214,7 +214,7 @@ export default async function handler(request, response) {
       throw new Error(`Google Sheet rejected the request (${sheetResponse.status})`);
     }
 
-    await scheduleMetaLead({ request, session, phone, email, eventId, metaBrowser });
+    await scheduleMetaCompleteRegistration({ request, session, phone, email, eventId, metaBrowser });
 
     return response.status(200).json({ ok: true });
   } catch (error) {
