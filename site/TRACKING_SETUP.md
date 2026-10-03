@@ -33,6 +33,8 @@ Liên kết quảng cáo chuẩn phải dùng dấu `?`, ví dụ `https://webin
 
 Meta Pixel được mã nguồn tải trực tiếp. Dùng Meta Pixel Helper và Events Manager Test Events để xác nhận `PageView`, `RegistrationCtaClick` và `CompleteRegistration`.
 
+Landing gọi `fbq("optOut", pixelId, "ESTRuleEngine")` trước `init` để không chạy quy tắc Event Setup Tool trên trang này. Pixel dùng chung đang có quy tắc CompleteRegistration theo nút “Xác nhận tham gia” (rule ID `2329379617873265`), tạo mã sự kiện riêng và có thể đếm thêm trước khi lưu form. Chặn riêng bộ quy tắc này vẫn giữ Pixel trực tiếp, API và cấu hình các website khác. Đây là tính năng có trong SDK Pixel hiện tại; kiểm tra lại bằng Test Events khi Meta cập nhật SDK. `autoConfig=false` riêng lẻ không chặn `ESTRuleEngine` trong SDK hiện tại.
+
 Sự kiện `CompleteRegistration` phía trình duyệt và máy chủ dùng chung `event_id` để Meta loại bỏ bản ghi trùng. Chỉ gửi sau khi API xác nhận lưu đăng ký thành công; mở hoặc tải lại trang cảm ơn không gửi sự kiện này. GA4/GTM vẫn dùng `generate_lead`. Email và số điện thoại được chuẩn hóa, băm SHA-256 ở API trước khi gửi; token không bao giờ được đưa xuống trình duyệt. Sau khi kiểm tra xong, xóa `META_TEST_EVENT_CODE` để chuyển sang dữ liệu production.
 
 Sau khi triển khai, chọn `CompleteRegistration` (Hoàn tất đăng ký) làm sự kiện chuyển đổi trong nhóm quảng cáo Meta đang dùng landing page này. Nếu có tag Meta hoặc quy tắc tự động gửi `Lead` trong GTM/Events Manager, kiểm tra và cập nhật riêng để báo cáo đúng sự kiện mới.

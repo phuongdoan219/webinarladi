@@ -11,6 +11,7 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 ## Durable design direction
 
 - Meta registration conversions use `CompleteRegistration` in both browser Pixel and server CAPI, sharing the event ID and firing only after the registration API confirms success. Keep GA4/GTM `generate_lead` unchanged.
+- Opt out of Meta `ESTRuleEngine` before pixel initialization on this landing. The shared pixel has a submit-button CompleteRegistration rule with a different event ID; do not allow it to count button clicks as confirmed registrations.
 
 - Preserve the approved Vietnamese content, imagery, section order, and compact mobile-first layout unless the user explicitly requests content changes.
 - Favor a modern TeenCare visual treatment inspired by the reference landing page: warm cream/orange/gold gradients, soft navy contrast, layered glow, glass-like cards, and restrained ambient motion.

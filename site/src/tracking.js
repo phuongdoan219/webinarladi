@@ -144,6 +144,10 @@ function initMetaPixel() {
   window._fbq = fbq;
 
   loadScript("teencare-meta-pixel", "https://connect.facebook.net/en_US/fbevents.js");
+  // The shared pixel has an Event Setup Tool rule for the submit button.
+  // Opt out before init so its automatic event cannot duplicate the confirmed
+  // registration below. Pixel config opt-ins respect this explicit opt-out.
+  window.fbq("optOut", VALID_META_PIXEL_ID, "ESTRuleEngine");
   window.fbq("init", VALID_META_PIXEL_ID);
   window.fbq("track", "PageView");
 }
