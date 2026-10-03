@@ -99,13 +99,6 @@ async function sendMetaCompleteRegistration({ request, session, phone, email, ev
   const testEventCode = String(process.env.META_TEST_EVENT_CODE || "").trim();
   if (testEventCode) payload.test_event_code = testEventCode;
 
-  // Temporary, scoped live QA: real registrations retain production delivery.
-  const qaSource = new URL(payload.data[0].event_source_url);
-  if (phone === "0000000000" && email === "pixel-test@example.com"
-    && qaSource.searchParams.get("utm_campaign") === "CR_QA_20261003_0950") {
-    payload.test_event_code = "TEST75048";
-  }
-
   const graphVersion = /^v\d+\.\d+$/.test(process.env.META_GRAPH_API_VERSION || "")
     ? process.env.META_GRAPH_API_VERSION
     : "v23.0";
