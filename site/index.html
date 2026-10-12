@@ -23,6 +23,8 @@
         s = b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t, s);
       })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      // This bootstrap runs before React; block Event Setup Tool button rules here too.
+      fbq("optOut", "821459060717967", "ESTRuleEngine");
       fbq("init", "821459060717967");
       fbq("track", "PageView");
     </script>

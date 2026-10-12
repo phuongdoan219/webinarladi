@@ -3,6 +3,37 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import vm from "node:vm";
 
+test("HTML bootstrap blocks button rules before React sees an existing pixel", async () => {
+  const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
+  const source = await readFile(new URL("../src/tracking.js", import.meta.url), "utf8");
+  const scripts = [];
+  const context = vm.createContext({
+    URL, URLSearchParams,
+    sessionStorage: { getItem: () => null },
+    document: {
+      getElementById: (id) => scripts.find((script) => script.id === id),
+      createElement: () => ({}),
+      getElementsByTagName: () => [{ parentNode: { insertBefore: (script) => scripts.push(script) } }],
+      head: { appendChild: (script) => scripts.push(script) },
+    },
+    window: { location: { href: "https://webinar.teencare.vn/", pathname: "/", search: "" } },
+  });
+  // In a browser, window properties are also globals used by the inline snippet.
+  Object.defineProperty(context, "fbq", { get: () => context.window.fbq });
+  for (const [, inlineScript] of html.matchAll(/<script\s*>([\s\S]*?)<\/script>/g)) {
+    vm.runInContext(inlineScript, context);
+  }
+  vm.runInContext(source.replaceAll("import.meta.env", '({ VITE_META_PIXEL_ID: "821459060717967" })')
+    .replaceAll("export ", ""), context);
+  vm.runInContext("initTracking(); initTracking()", context);
+  const calls = context.window.fbq.queue.map((args) => Array.from(args));
+  assert.deepEqual(calls[0], ["optOut", "821459060717967", "ESTRuleEngine"]);
+  assert.deepEqual(calls[1], ["init", "821459060717967"]);
+  assert.deepEqual(calls[2], ["track", "PageView"]);
+  assert.equal(calls.length, 3, "HTML and React must not send duplicate page views");
+  assert.equal(scripts.length, 1);
+});
+
 test("pixel initialization disables button-derived events before init and only sends PageView", async () => {
   const source = await readFile(new URL("../src/tracking.js", import.meta.url), "utf8");
   const scripts = [];
