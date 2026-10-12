@@ -5,6 +5,7 @@ function installAudit() {
   let output;
   function record(kind, data) {
     rows.push({ time: new Date().toISOString(), kind, ...data });
+    sessionStorage.setItem('teencare_pixel_audit', JSON.stringify(rows));
     if (output) output.textContent = JSON.stringify(rows, null, 2);
   }
   function safeUrl(value) {
@@ -22,7 +23,7 @@ function installAudit() {
     if (Array.isArray(value)) { value.forEach(v => addEvent(v, found, depth + 1)); return; }
     if (typeof value === 'object') {
       const name = value.event_name || value.ev || value.eventName;
-      if (name) found.push({ event: name, pixel: value.pixel_id || value.id, eventId: value.event_id || value.eid });
+      if (name) found.push({ event: name, pixel: value.pixel_id || value['fb.pixel_id'] || value.id, eventId: value.event_id || value.eid, smartSetup: typeof value.smart_setup === 'boolean' ? value.smart_setup : undefined });
       for (const key of ['data', 'events', 'event', 'payload', 'eventData']) addEvent(value[key], found, depth + 1);
     }
   }
@@ -45,6 +46,10 @@ function installAudit() {
   let pixel;
   Object.defineProperty(window, 'fbq', { configurable: true, get() { return pixel; }, set(value) {
     pixel = typeof value === 'function' ? new Proxy(value, { apply(target, thisArg, args) {
+      if (args[0] === 'init' && new URLSearchParams(location.search).get('bridge') === 'off') {
+        record('command', { command: 'optOut', event: args[1], plugin: 'OpenBridge' });
+        Reflect.apply(target, thisArg, ['optOut', args[1], 'OpenBridge']);
+      }
       record('command', { command: args[0], event: args[1] });
       return Reflect.apply(target, thisArg, args);
     } }) : value;
@@ -63,7 +68,9 @@ function installAudit() {
     const url = input instanceof Request ? input.url : input;
     if (safeUrl(url).endsWith('/api/register') && init?.method === 'POST') {
       record('registration_blocked', { result: 'No test lead sent to Sheet' });
-      return Promise.resolve(new Response(JSON.stringify({ ok: false, error: 'Diagnostic registration blocked' }), { status: 400, headers: { 'Content-Type': 'application/json' } }));
+      const simulateSuccess = new URLSearchParams(location.search).get('simulate') === 'success';
+      if (simulateSuccess) record('simulated_api_success', { eventId: JSON.parse(init.body).eventId });
+      return Promise.resolve(new Response(JSON.stringify({ ok: simulateSuccess, error: 'Diagnostic registration blocked' }), { status: simulateSuccess ? 200 : 400, headers: { 'Content-Type': 'application/json' } }));
     }
     inspect('fetch', url, init?.body);
     const result = request.call(this, input, init);
@@ -102,7 +109,9 @@ function installAudit() {
     panel.append(title, output); document.body.append(panel); output.textContent = JSON.stringify(rows, null, 2);
   });
 }
-if (new URLSearchParams(location.search).get('audit') !== '20261012') {
+if (new URLSearchParams(location.search).get('history') === '1') {
+  const output = document.createElement('pre'); output.id = 'pixel-audit-output'; output.textContent = sessionStorage.getItem('teencare_pixel_audit') || '[]'; document.body.replaceChildren(output);
+} else if (new URLSearchParams(location.search).get('audit') !== '20261012') {
   document.body.textContent = 'Trang kiểm tra tạm thời.';
 } else {
   fetch('/', { cache: 'no-store' }).then(r => r.text()).then(html => {
