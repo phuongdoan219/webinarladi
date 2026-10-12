@@ -1,0 +1,113 @@
+<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><title>Kiểm tra Pixel TeenCare</title><body>Đang mở bản kiểm tra Pixel…
+<script>
+function installAudit() {
+  const rows = [];
+  let output;
+  function record(kind, data) {
+    rows.push({ time: new Date().toISOString(), kind, ...data });
+    if (output) output.textContent = JSON.stringify(rows, null, 2);
+  }
+  function safeUrl(value) {
+    try { const u = new URL(String(value), location.href); return u.origin + u.pathname; }
+    catch { return 'unknown'; }
+  }
+  function addEvent(value, found, depth = 0) {
+    if (!value || depth > 6) return;
+    if (typeof value === 'string') {
+      try { addEvent(JSON.parse(value), found, depth + 1); } catch {}
+      const params = new URLSearchParams(value);
+      if (params.get('ev')) found.push({ event: params.get('ev'), pixel: params.get('id'), eventId: params.get('eid') });
+      return;
+    }
+    if (Array.isArray(value)) { value.forEach(v => addEvent(v, found, depth + 1)); return; }
+    if (typeof value === 'object') {
+      const name = value.event_name || value.ev || value.eventName;
+      if (name) found.push({ event: name, pixel: value.pixel_id || value.id, eventId: value.event_id || value.eid });
+      for (const key of ['data', 'events', 'event', 'payload', 'eventData']) addEvent(value[key], found, depth + 1);
+    }
+  }
+  async function bodyText(body) {
+    if (body == null) return '';
+    if (typeof body === 'string' || body instanceof URLSearchParams) return String(body);
+    if (body instanceof Blob) return body.text();
+    if (body instanceof FormData) return new URLSearchParams(Array.from(body.entries()).filter(([,v]) => typeof v === 'string')).toString();
+    return '';
+  }
+  async function inspect(transport, url, body) {
+    const endpoint = safeUrl(url);
+    if (!/facebook\.com|a\.run\.app|on\.aws/.test(endpoint)) return;
+    const found = [];
+    try { addEvent(new URL(String(url), location.href).search.slice(1), found); } catch {}
+    const text = await bodyText(body);
+    addEvent(text, found);
+    record('request', { transport, endpoint, events: found, bodyKeys: text.startsWith('{') ? Object.keys(JSON.parse(text)) : Array.from(new URLSearchParams(text).keys()) });
+  }
+  let pixel;
+  Object.defineProperty(window, 'fbq', { configurable: true, get() { return pixel; }, set(value) {
+    pixel = typeof value === 'function' ? new Proxy(value, { apply(target, thisArg, args) {
+      record('command', { command: args[0], event: args[1] });
+      return Reflect.apply(target, thisArg, args);
+    } }) : value;
+  } });
+  const src = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
+  Object.defineProperty(HTMLImageElement.prototype, 'src', { ...src, set(value) {
+    inspect('image', value);
+    if (/facebook\.com/.test(safeUrl(value))) {
+      this.addEventListener('load', () => record('response', { transport: 'image', endpoint: safeUrl(value), result: 'loaded' }), { once: true });
+      this.addEventListener('error', () => record('response', { transport: 'image', endpoint: safeUrl(value), result: 'error' }), { once: true });
+    }
+    return src.set.call(this, value);
+  } });
+  const request = window.fetch;
+  window.fetch = function(input, init) {
+    const url = input instanceof Request ? input.url : input;
+    if (safeUrl(url).endsWith('/api/register') && init?.method === 'POST') {
+      record('registration_blocked', { result: 'No test lead sent to Sheet' });
+      return Promise.resolve(new Response(JSON.stringify({ ok: false, error: 'Diagnostic registration blocked' }), { status: 400, headers: { 'Content-Type': 'application/json' } }));
+    }
+    inspect('fetch', url, init?.body);
+    const result = request.call(this, input, init);
+    if (/facebook\.com|a\.run\.app|on\.aws/.test(safeUrl(url))) result.then(res => record('response', { transport: 'fetch', endpoint: safeUrl(url), status: res.status, type: res.type }), () => record('response', { transport: 'fetch', endpoint: safeUrl(url), result: 'network_error' }));
+    return result;
+  };
+  const beacon = navigator.sendBeacon.bind(navigator);
+  navigator.sendBeacon = function(url, body) {
+    inspect('beacon', url, body);
+    const accepted = beacon(url, body);
+    record('beacon_acceptance', { endpoint: safeUrl(url), accepted });
+    return accepted;
+  };
+  const requests = new WeakMap();
+  const open = XMLHttpRequest.prototype.open;
+  const send = XMLHttpRequest.prototype.send;
+  XMLHttpRequest.prototype.open = function(method, url, ...rest) { requests.set(this, url); return open.call(this, method, url, ...rest); };
+  XMLHttpRequest.prototype.send = function(body) {
+    const url = requests.get(this);
+    inspect('xhr', url, body);
+    if (/facebook\.com|a\.run\.app|on\.aws/.test(safeUrl(url))) this.addEventListener('loadend', () => record('response', { transport: 'xhr', endpoint: safeUrl(url), status: this.status }), { once: true });
+    return send.call(this, body);
+  };
+  for (const type of ['focusin', 'click', 'input', 'change', 'invalid', 'submit']) document.addEventListener(type, e => {
+    if (e.target.matches('input,textarea,form,button[type="submit"]')) record('interaction', { action: type, field: e.target.name || e.target.tagName });
+  }, true);
+  document.addEventListener('error', e => {
+    if (e.target.tagName === 'SCRIPT') record('script_error', { endpoint: safeUrl(e.target.src) });
+  }, true);
+  window.addEventListener('DOMContentLoaded', () => {
+    const panel = document.createElement('details');
+    panel.open = true;
+    panel.style.cssText = 'position:fixed;top:0;right:0;z-index:999999;background:white;color:#152744;width:480px;max-height:40vh;overflow:auto;border:2px solid #152744;font:12px monospace';
+    const title = document.createElement('summary'); title.textContent = 'Kiểm tra Pixel — không lưu form vào Sheet';
+    output = document.createElement('pre'); output.id = 'pixel-audit-output'; output.style.whiteSpace = 'pre-wrap';
+    panel.append(title, output); document.body.append(panel); output.textContent = JSON.stringify(rows, null, 2);
+  });
+}
+if (new URLSearchParams(location.search).get('audit') !== '20261012') {
+  document.body.textContent = 'Trang kiểm tra tạm thời.';
+} else {
+  fetch('/', { cache: 'no-store' }).then(r => r.text()).then(html => {
+    const script = '<scr' + 'ipt>(' + installAudit.toString() + ')();</scr' + 'ipt>';
+    document.open(); document.write(html.replace('<head>', '<head><meta name="robots" content="noindex,nofollow">' + script)); document.close();
+  });
+}
+</script></body></html>
